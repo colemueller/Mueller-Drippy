@@ -21,7 +21,8 @@ public class OnHoldContact : MonoBehaviour {
     private Vector2 forceVector;
     public bool doBoost = true;
     public float boostAmount;
-   
+
+    bool canTap = false;
 
     private void Awake()
     {
@@ -64,23 +65,27 @@ public class OnHoldContact : MonoBehaviour {
             score++;
             drop.Play();
             //genScript.GenerateHold();
+            canTap = true;
             Debug.Log("HIT");
         }
     }
 
     public void OnScreenTap()
     {
-        currentHold.tag = "Untagged";
-        currentHold.GetComponent<CircleCollider2D>().enabled = true;
-        
-        //cam.GetComponent<CameraFollow>().enabled = true;
-        GetComponent<CircleCollider2D>().enabled = true;
-        doSway = false;
-        playerRigidbody.gravityScale = 1;
-        
-        playerRigidbody.AddForceAtPosition(forceAmount, forceVector, ForceMode2D.Impulse);
-        forceTransform.gameObject.GetComponent<MoveThis>().enabled = false;
+        if (canTap)
+        {
+            currentHold.tag = "Untagged";
+            currentHold.GetComponent<CircleCollider2D>().enabled = true;
 
-        Debug.Log("FALL");
+            //cam.GetComponent<CameraFollow>().enabled = true;
+            GetComponent<CircleCollider2D>().enabled = true;
+            doSway = false;
+            playerRigidbody.gravityScale = 1;
+
+            playerRigidbody.AddForceAtPosition(forceAmount, forceVector, ForceMode2D.Impulse);
+            forceTransform.gameObject.GetComponent<MoveThis>().enabled = false;
+            canTap = false;
+            Debug.Log("FALL");
+        }
     }
 }
