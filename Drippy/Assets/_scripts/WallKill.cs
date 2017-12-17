@@ -19,6 +19,7 @@ public class WallKill : MonoBehaviour {
             collision.gameObject.SetActive(false);
             deathMenuActive.isMenuActive = true;
             
+
         }
     }
 }

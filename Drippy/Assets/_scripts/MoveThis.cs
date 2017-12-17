@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveThis : MonoBehaviour {
 
+    
     public float moveSpeed = 5;
     public float distance = 2;
 	// Update is called once per frame

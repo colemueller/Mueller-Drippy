@@ -11,6 +11,6 @@ public class ScaleWidth : MonoBehaviour {
         float height = Camera.main.orthographicSize * 2;
         float width = height * Screen.width / Screen.height; // basically height * screen aspect ratio
 
-        this.transform.localScale = new Vector3(width/6.5f, height/10, 0);
+        this.transform.localScale = new Vector3(width/5.8f, height/10, 0);
     }
 }

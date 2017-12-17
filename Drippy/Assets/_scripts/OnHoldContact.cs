@@ -21,6 +21,7 @@ public class OnHoldContact : MonoBehaviour {
     private Vector2 forceVector;
     public bool doBoost = true;
     public float boostAmount;
+   
 
     private void Awake()
     {
@@ -52,7 +53,7 @@ public class OnHoldContact : MonoBehaviour {
         if (collision.CompareTag("hold"))
         {
             currentHold = collision.gameObject;
-            currentHold.transform.GetChild(0).gameObject.SetActive(false);
+            
             //cam.GetComponent<CameraFollow>().enabled = false;
             GetComponent<CircleCollider2D>().enabled = false;
             doSway = true;
@@ -62,14 +63,16 @@ public class OnHoldContact : MonoBehaviour {
             playerRigidbody.gravityScale = 0;
             score++;
             drop.Play();
-            genScript.GenerateHold();
+            //genScript.GenerateHold();
             Debug.Log("HIT");
         }
     }
 
     public void OnScreenTap()
     {
-        currentHold.GetComponent<CircleCollider2D>().enabled = false;
+        currentHold.tag = "Untagged";
+        currentHold.GetComponent<CircleCollider2D>().enabled = true;
+        
         //cam.GetComponent<CameraFollow>().enabled = true;
         GetComponent<CircleCollider2D>().enabled = true;
         doSway = false;
