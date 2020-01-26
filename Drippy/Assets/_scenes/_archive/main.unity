@@ -2525,9 +2525,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   genScript: {fileID: 91952323}
   scoreText: {fileID: 1943754835}
-  forceTransform: {fileID: 1391562764}
   swaySpeed: 5
   swayDistance: 60
-  forceVars: {x: 2, y: 0}
-  doBoost: 1
-  boostAmount: 0.01

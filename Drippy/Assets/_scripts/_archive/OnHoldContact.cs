@@ -12,49 +12,45 @@ public class OnHoldContact : MonoBehaviour {
     private Rigidbody2D playerRigidbody;
     private GameObject currentHold;
     //public Camera cam;
-    public Transform forceTransform;
     private bool doSway = false;
     public float swaySpeed = 5;
     public float swayDistance = 60;
-    public Vector2 forceVars;
-    private Vector2 forceAmount;
-    private Vector2 forceVector;
-    private float swing_direction;
-    public bool doBoost = true;
-    public float boostAmount;
-
+    private float swing_mult;
+    private float prev_angle;
+    private float current_angle;
     bool canTap = false;
 
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
         drop = GetComponent<AudioSource>();
-        swing_direction = 1;
     }
 
     private void Update()
     {
         scoreText.text = "Score: " + score.ToString();
 
-        //Increases force amount as the swing approaches the edges
-        if (doBoost)
-        {
-            forceVars = new Vector2(forceVars.x + (Mathf.Sin(Time.time * swaySpeed) * boostAmount), forceVars.y);
-        }
-
-        forceVector = new Vector2(forceTransform.position.x, forceTransform.position.y);
-        forceAmount = new Vector2(Mathf.Sin(Time.time * swaySpeed) * forceVars.x, forceVars.y);
-
         if (doSway)
         {
+            // sway based on sin wave
             transform.localEulerAngles = new Vector3(0, 0, Mathf.Sin(Time.time *swaySpeed) * swayDistance);
-            if (transform.localEulerAngles.z >= 315 || transform.localEulerAngles.z <= 45){
-                swing_direction = 1;
+            current_angle = transform.localEulerAngles.z;
+            if (current_angle >= 180f) {
+                //left side
+                if (current_angle > prev_angle) {
+                    swing_mult = -1;
+                } else {
+                    swing_mult = 1;
+                }
+            } else{
+                //right side
+                if (current_angle > prev_angle) {
+                    swing_mult = 1;
+                } else {
+                    swing_mult = -1;
+                }
             }
-            if (transform.localEulerAngles.z >= 350 || transform.localEulerAngles.z <= 15){
-                swing_direction = -1;
-            }
-
+            prev_angle = current_angle;
         }
     }
 
@@ -67,15 +63,12 @@ public class OnHoldContact : MonoBehaviour {
             //cam.GetComponent<CameraFollow>().enabled = false;
             GetComponent<CircleCollider2D>().enabled = false;
             doSway = true;
-            forceTransform.gameObject.GetComponent<MoveThis>().enabled = true;
             transform.position = new Vector3(currentHold.transform.position.x, currentHold.transform.position.y, transform.position.z);
             playerRigidbody.velocity = Vector2.zero;
             playerRigidbody.gravityScale = 0;
             score++;
             drop.Play();
-            //genScript.GenerateHold();
             canTap = true;
-            Debug.Log("HIT");
         }
     }
 
@@ -91,13 +84,9 @@ public class OnHoldContact : MonoBehaviour {
             doSway = false;
             playerRigidbody.gravityScale = 1;
             // 
-            playerRigidbody.velocity = new Vector2(Mathf.Cos(Mathf.Deg2Rad*(transform.localEulerAngles.z-90f))*2f*swing_direction,
+            playerRigidbody.velocity = new Vector2(Mathf.Cos(Mathf.Deg2Rad*(transform.localEulerAngles.z-90f))*2f*swing_mult,
                                                    Mathf.Abs(Mathf.Cos(Mathf.Deg2Rad*(transform.localEulerAngles.z-90f)))*2f);
-
-            //playerRigidbody.AddForceAtPosition(forceAmount, forceVector, ForceMode2D.Impulse);
-            forceTransform.gameObject.GetComponent<MoveThis>().enabled = false;
             canTap = false;
-            Debug.Log("FALL");
         }
     }
 }
