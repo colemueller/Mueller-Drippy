@@ -19,6 +19,7 @@ public class OnHoldContact : MonoBehaviour {
     public Vector2 forceVars;
     private Vector2 forceAmount;
     private Vector2 forceVector;
+    private float swing_direction;
     public bool doBoost = true;
     public float boostAmount;
 
@@ -28,6 +29,7 @@ public class OnHoldContact : MonoBehaviour {
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
         drop = GetComponent<AudioSource>();
+        swing_direction = 1;
     }
 
     private void Update()
@@ -46,6 +48,13 @@ public class OnHoldContact : MonoBehaviour {
         if (doSway)
         {
             transform.localEulerAngles = new Vector3(0, 0, Mathf.Sin(Time.time *swaySpeed) * swayDistance);
+            if (transform.localEulerAngles.z >= 315 || transform.localEulerAngles.z <= 45){
+                swing_direction = 1;
+            }
+            if (transform.localEulerAngles.z >= 350 || transform.localEulerAngles.z <= 15){
+                swing_direction = -1;
+            }
+
         }
     }
 
@@ -81,8 +90,11 @@ public class OnHoldContact : MonoBehaviour {
             GetComponent<CircleCollider2D>().enabled = true;
             doSway = false;
             playerRigidbody.gravityScale = 1;
+            // 
+            playerRigidbody.velocity = new Vector2(Mathf.Cos(Mathf.Deg2Rad*(transform.localEulerAngles.z-90f))*2f*swing_direction,
+                                                   Mathf.Abs(Mathf.Cos(Mathf.Deg2Rad*(transform.localEulerAngles.z-90f)))*2f);
 
-            playerRigidbody.AddForceAtPosition(forceAmount, forceVector, ForceMode2D.Impulse);
+            //playerRigidbody.AddForceAtPosition(forceAmount, forceVector, ForceMode2D.Impulse);
             forceTransform.gameObject.GetComponent<MoveThis>().enabled = false;
             canTap = false;
             Debug.Log("FALL");
