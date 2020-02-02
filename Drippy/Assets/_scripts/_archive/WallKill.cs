@@ -17,8 +17,8 @@ public class WallKill : MonoBehaviour {
         {
             //deathMenu = GameObject.FindGameObjectWithTag("deathMenu");
             collision.gameObject.SetActive(false);
-            deathMenuActive.isMenuActive = true;
-            
+            //deathMenuActive.isMenuActive = true;
+            //OnDeath.InvokeDeath();
 
         }
     }
