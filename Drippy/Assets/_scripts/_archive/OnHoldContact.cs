@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class OnHoldContact : MonoBehaviour {
 
-    public Generate genScript;
     public Text scoreText;
     private int score = 0;
     private AudioSource drop;
