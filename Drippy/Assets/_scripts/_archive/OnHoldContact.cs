@@ -33,7 +33,7 @@ public class OnHoldContact : MonoBehaviour {
     private void Update()
     {
         Camera.main.transform.position = new Vector3(0, (myTransform.position.y - 3.5f), 0);
-        score = myTransform.position.y;
+        score = myTransform.position.y - 3;
         score = Mathf.RoundToInt(score);
         score = Mathf.Abs(score);
         Score._score = (int)score;
