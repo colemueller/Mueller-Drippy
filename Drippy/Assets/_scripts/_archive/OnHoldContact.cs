@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class OnHoldContact : MonoBehaviour {
 
-    public Text scoreText;
+    //public Score scoreText;
     private float score = 0;
     private AudioSource drop;
     private Rigidbody2D playerRigidbody;
@@ -32,10 +32,12 @@ public class OnHoldContact : MonoBehaviour {
 
     private void Update()
     {
+        Camera.main.transform.position = new Vector3(0, (myTransform.position.y - 3.5f), 0);
         score = myTransform.position.y;
         score = Mathf.RoundToInt(score);
         score = Mathf.Abs(score);
-        scoreText.text = "Score: " + score.ToString() + "m";
+        Score._score = (int)score;
+        //scoreText.text = "Score: " + score.ToString() + "m";
 
         if (doSway)
         {
