@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class OnHoldContact : MonoBehaviour {
 
     public Text scoreText;
-    private int score = 0;
+    private float score = 0;
     private AudioSource drop;
     private Rigidbody2D playerRigidbody;
     private GameObject currentHold;
@@ -21,16 +21,21 @@ public class OnHoldContact : MonoBehaviour {
     private float prev_angle;
     private float current_angle;
     bool canTap = false;
+    private RectTransform myTransform;
 
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
         drop = GetComponent<AudioSource>();
+        myTransform = this.GetComponent<RectTransform>();
     }
 
     private void Update()
     {
-        scoreText.text = "Score: " + score.ToString();
+        score = myTransform.position.y;
+        score = Mathf.RoundToInt(score);
+        score = Mathf.Abs(score);
+        scoreText.text = "Score: " + score.ToString() + "m";
 
         if (doSway)
         {
@@ -68,7 +73,7 @@ public class OnHoldContact : MonoBehaviour {
             transform.position = new Vector3(currentHold.transform.position.x, currentHold.transform.position.y, transform.position.z);
             playerRigidbody.velocity = Vector2.zero;
             playerRigidbody.gravityScale = 0;
-            score++;
+            //score++;
             drop.Play();
             canTap = true;
         }
