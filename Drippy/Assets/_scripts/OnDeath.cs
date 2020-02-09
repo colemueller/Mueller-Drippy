@@ -5,7 +5,7 @@ using UnityEngine;
 public class OnDeath : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Awake()
+    public void SetUp()
     {
         EventManager.StartListening("death", InvokeDeath);
         this.gameObject.SetActive(false);

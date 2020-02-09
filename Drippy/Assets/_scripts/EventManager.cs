@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class EventManager : MonoBehaviour {
 
+    public OnDeath deathMenuScr;
+
     private Dictionary <string, UnityEvent> eventDictionary;
 
     private static EventManager eventManager;
@@ -37,6 +39,7 @@ public class EventManager : MonoBehaviour {
         {
             eventDictionary = new Dictionary<string, UnityEvent>();
         }
+        deathMenuScr.SetUp();
     }
 
     public static void StartListening (string eventName, UnityAction listener)
