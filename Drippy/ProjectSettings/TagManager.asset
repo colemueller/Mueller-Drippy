@@ -7,6 +7,9 @@ TagManager:
   - hold
   - deathMenu
   - destroyer
+  - platform
+  - platform_edge
+  - collidedPlatform
   layers:
   - Default
   - TransparentFX
