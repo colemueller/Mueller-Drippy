@@ -40,6 +40,7 @@ public class Generate : MonoBehaviour {
         GameObject clone = Instantiate(holdPrefab, new Vector3(rand, transform.position.y, 1), Quaternion.identity) as GameObject;
         clone.transform.SetParent(parentObj);
     }
+    
 
     public void GeneratePlatform(float rand)
     {
