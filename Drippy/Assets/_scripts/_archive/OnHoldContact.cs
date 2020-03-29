@@ -18,6 +18,7 @@ public class OnHoldContact : MonoBehaviour {
     private RectTransform myTransform;
     private float velocity_zero_timer = 0f;
     private Vector3 startScale;
+    private bool on_platform = false;
     bool canTap = false;
     public float swaySpeed = 5;
     public float swayDistance = 60;
@@ -87,13 +88,20 @@ public class OnHoldContact : MonoBehaviour {
                     playerRigidbody.velocity = new Vector2(-maxSideSpeed, playerRigidbody.velocity.y);
                 }
             }
-            if (playerRigidbody.velocity.x <= .001f && playerRigidbody.velocity.y <= .001f)
+            if (playerRigidbody.velocity.x <= .001f && playerRigidbody.velocity.y <= .001f && on_platform)
             {
                 velocity_zero_timer += Time.deltaTime;
                 print(velocity_zero_timer);
-                if (velocity_zero_timer > 1.5f)
+                if (velocity_zero_timer > 2f)
                 {
-                    currentPlatform.GetComponent<Collider2D>().enabled = false;
+                    if (gameObject.transform.position.x > 0)
+                    {
+                        playerRigidbody.velocity = new Vector2(-.1f, 0f);
+                    }
+                    else
+                    {    
+                        playerRigidbody.velocity = new Vector2(.1f, 0f);
+                    }
                 }
             }
             else
@@ -115,7 +123,7 @@ public class OnHoldContact : MonoBehaviour {
             transform.position = new Vector3(currentHold.transform.position.x, currentHold.transform.position.y, transform.position.z);
             playerRigidbody.velocity = Vector2.zero;
             playerRigidbody.gravityScale = 0;
-            //score++;
+            
             drop.Play();
             canTap = true;
         }
@@ -125,7 +133,7 @@ public class OnHoldContact : MonoBehaviour {
     {
         if (collision.gameObject.tag == "platform")
         {
-            collision.gameObject.tag = "collidedPlatform";
+            on_platform = true;
             currentPlatform = collision.gameObject;
             playerRigidbody.angularVelocity = 0f;
             transform.rotation = new Quaternion(0f, 0f, collision.gameObject.transform.rotation.z, Quaternion.identity[3]);
@@ -148,7 +156,7 @@ public class OnHoldContact : MonoBehaviour {
     {
         if (collision.CompareTag("platform_edge"))
         {
-            currentPlatform.GetComponent<BoxCollider2D>().enabled = false;
+            on_platform = false;
             // put the transition back to falling sprite here
             gameObject.GetComponentInChildren<SpriteRenderer>().sprite = neutral;
             playerRigidbody.freezeRotation = false;
