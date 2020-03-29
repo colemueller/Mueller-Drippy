@@ -11,20 +11,23 @@ public class OnHoldContact : MonoBehaviour {
     private Rigidbody2D playerRigidbody;
     private GameObject currentHold;
     private GameObject currentPlatform;
-    //public Camera cam;
     private bool doSway = false;
     private float swing_mult;
     private float prev_angle;
     private float current_angle;
-    bool canTap = false;
     private RectTransform myTransform;
+    private float velocity_zero_timer = 0f;
     private Vector3 startScale;
+    bool canTap = false;
     public float swaySpeed = 5;
     public float swayDistance = 60;
     public float maxFallSpeed = 10f;
     public float maxSideSpeed = 8f;
     public float x_force_mult = 3.5f;
     public float y_force_mult = .5f;
+    public Sprite neutral;
+    public Sprite left_slide;
+    public Sprite right_slide;
 
     private void Awake()
     {
@@ -45,6 +48,7 @@ public class OnHoldContact : MonoBehaviour {
 
         if (doSway)
         {
+            playerRigidbody.angularVelocity = 0f;
             // sway based on sin wave
             transform.localEulerAngles = new Vector3(0, 0, Mathf.Sin(Time.time * swaySpeed) * swayDistance);
             // determines if the player is on an up or down swing for use in the OnScreenTap y-velocity
@@ -68,17 +72,33 @@ public class OnHoldContact : MonoBehaviour {
         }
         else 
         {
-            if (Mathf.Abs(gameObject.GetComponent<Rigidbody2D>().velocity.y) >= maxFallSpeed) {
-                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x,
+            if (Mathf.Abs(playerRigidbody.velocity.y) >= maxFallSpeed)
+            {
+                playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x,
                                                                               -maxFallSpeed);
             }
-            else if (Mathf.Abs(gameObject.GetComponent<Rigidbody2D>().velocity.x) >= maxSideSpeed) {
-                if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 0) {
-                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(maxSideSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            if (Mathf.Abs(playerRigidbody.velocity.x) >= maxSideSpeed)
+            {
+                if (playerRigidbody.velocity.x > 0)
+                {
+                    playerRigidbody.velocity = new Vector2(maxSideSpeed, playerRigidbody.velocity.y);
                 }
                 else {
-                    gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-maxSideSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+                    playerRigidbody.velocity = new Vector2(-maxSideSpeed, playerRigidbody.velocity.y);
                 }
+            }
+            if (playerRigidbody.velocity.x <= .001f && playerRigidbody.velocity.y <= .001f)
+            {
+                velocity_zero_timer += Time.deltaTime;
+                print(velocity_zero_timer);
+                if (velocity_zero_timer > 1.5f)
+                {
+                    currentPlatform.GetComponent<Collider2D>().enabled = false;
+                }
+            }
+            else
+            {
+                velocity_zero_timer = 0f;
             }
         }
     }
@@ -99,12 +119,6 @@ public class OnHoldContact : MonoBehaviour {
             drop.Play();
             canTap = true;
         }
-        else if (collision.CompareTag("platform_edge"))
-        {
-            currentPlatform.GetComponent<BoxCollider2D>().enabled = false;
-            // put the transition back to falling sprite here
-            transform.localScale = startScale;
-        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -113,14 +127,32 @@ public class OnHoldContact : MonoBehaviour {
         {
             collision.gameObject.tag = "collidedPlatform";
             currentPlatform = collision.gameObject;
-            BoxCollider2D[] side_cols = currentPlatform.GetComponentsInChildren<BoxCollider2D>();
-            foreach (BoxCollider2D bc in side_cols) {
-                bc.enabled = true;
+            playerRigidbody.angularVelocity = 0f;
+            transform.rotation = new Quaternion(0f, 0f, collision.gameObject.transform.rotation.z, Quaternion.identity[3]);
+            playerRigidbody.freezeRotation = true;
+            // put the transition to slide sprite here //
+            if (collision.gameObject.transform.rotation.z > 0f)
+            {
+                gameObject.GetComponentInChildren<SpriteRenderer>().sprite = left_slide;
             }
-            // put the transition to slide sprite here
-            transform.localScale = new Vector3(startScale.x, startScale.y*.1f, startScale.z);
+            else if (collision.gameObject.transform.rotation.z < 0f)
+            {
+                gameObject.GetComponentInChildren<SpriteRenderer>().sprite = right_slide;
+            }
 
             Debug.Log("platform");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("platform_edge"))
+        {
+            currentPlatform.GetComponent<BoxCollider2D>().enabled = false;
+            // put the transition back to falling sprite here
+            gameObject.GetComponentInChildren<SpriteRenderer>().sprite = neutral;
+            playerRigidbody.freezeRotation = false;
+            playerRigidbody.angularVelocity = 90f;
         }
     }
 
