@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
 
     void Awake()
     {
+        _score = 0;
         //should only run on initial boot up of game
         for(int i = 1; i <= 5; i++)
         {

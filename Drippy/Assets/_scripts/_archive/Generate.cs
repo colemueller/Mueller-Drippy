@@ -8,19 +8,20 @@ public class Generate : MonoBehaviour {
     public GameObject platformPrefab;
     public Transform parentObj;
 
-    private int spawnNum = 0;
+    private int spawnNum = 5;
     private int dot_streak = 0;
     private int platform_streak = 0;
 
     public void Start()
     {
-
+        spawnNum = 5;
     }
 
     public void Update()
     {
         if(Score._score >= spawnNum)
         {
+            //print(Score._score +" : " + spawnNum);
             // random position for the x placement
             float randx = Random.Range(-2f, 2f);
             // random percentage for picking a hold or something else
