@@ -507,6 +507,9 @@ MonoBehaviour:
   music: {fileID: 0}
   rain: {fileID: 0}
   scoreGO: {fileID: 5739079078603314704}
+  rotSpeed: 0.1
+  moveSpeed: 0.5
+  moveDist: 0.4
 --- !u!114 &1570196615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,7 +951,7 @@ PrefabInstance:
     - target: {fileID: 406059335743619347, guid: ed9c2d9d9d2af684bb1103ea9dc0bd53,
         type: 3}
       propertyPath: m_Text
-      value: v 1.1
+      value: v 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 406059336563227312, guid: ed9c2d9d9d2af684bb1103ea9dc0bd53,
         type: 3}
@@ -1003,7 +1006,7 @@ PrefabInstance:
     - target: {fileID: 406059337551915921, guid: ed9c2d9d9d2af684bb1103ea9dc0bd53,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnStartPress
+      value: MoveBack
       objectReference: {fileID: 0}
     - target: {fileID: 6726545294359125318, guid: ed9c2d9d9d2af684bb1103ea9dc0bd53,
         type: 3}

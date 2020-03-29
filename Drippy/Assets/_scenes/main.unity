@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4766373808093274, guid: a307a7a7ee87b844cb713fa398e7a754, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4766373808093274, guid: a307a7a7ee87b844cb713fa398e7a754, type: 3}
       propertyPath: m_LocalRotation.x
@@ -5652,18 +5652,6 @@ PrefabInstance:
       propertyPath: rain
       value: 
       objectReference: {fileID: 59330847}
-    - target: {fileID: 921786112, guid: e1f9086e278b7e14a894638e9bc9895a, type: 3}
-      propertyPath: rotSpeed
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 921786112, guid: e1f9086e278b7e14a894638e9bc9895a, type: 3}
-      propertyPath: moveSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 921786112, guid: e1f9086e278b7e14a894638e9bc9895a, type: 3}
-      propertyPath: moveDist
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 2346055009306725939, guid: e1f9086e278b7e14a894638e9bc9895a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5782,16 +5770,6 @@ PrefabInstance:
     - target: {fileID: 2532565482567089116, guid: e1f9086e278b7e14a894638e9bc9895a,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776440804224778831, guid: e1f9086e278b7e14a894638e9bc9895a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveBack
-      objectReference: {fileID: 0}
-    - target: {fileID: 5739079079065583464, guid: e1f9086e278b7e14a894638e9bc9895a,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

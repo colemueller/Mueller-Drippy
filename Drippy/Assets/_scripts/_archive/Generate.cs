@@ -50,7 +50,7 @@ public class Generate : MonoBehaviour {
 
     public void GenerateHold(float rand)
     {
-        GameObject clone = Instantiate(holdPrefab, new Vector3(rand, transform.position.y, 1), Quaternion.identity) as GameObject;
+        GameObject clone = Instantiate(holdPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.identity) as GameObject;
         clone.transform.SetParent(parentObj);
     }
     
@@ -58,7 +58,7 @@ public class Generate : MonoBehaviour {
     public void GeneratePlatform(float rand, float angle_min, float angle_max)
     {
         float rot = Random.Range(angle_min, angle_max);
-        GameObject clone = Instantiate(platformPrefab, new Vector3(rand, transform.position.y, 1), Quaternion.Euler(0f, 0f, rot)) as GameObject;
+        GameObject clone = Instantiate(platformPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.Euler(0f, 0f, rot)) as GameObject;
         clone.transform.SetParent(parentObj);
     }
 
