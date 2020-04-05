@@ -88,25 +88,16 @@ public class OnHoldContact : MonoBehaviour {
                     playerRigidbody.velocity = new Vector2(-maxSideSpeed, playerRigidbody.velocity.y);
                 }
             }
-            if (playerRigidbody.velocity.x <= .001f && playerRigidbody.velocity.y <= .001f && on_platform)
+            if (on_platform)
             {
-                velocity_zero_timer += Time.deltaTime;
-                print(velocity_zero_timer);
-                if (velocity_zero_timer > 2f)
+                if (playerRigidbody.velocity.x < 0f)
                 {
-                    if (gameObject.transform.position.x > 0)
-                    {
-                        playerRigidbody.velocity = new Vector2(-.1f, 0f);
-                    }
-                    else
-                    {    
-                        playerRigidbody.velocity = new Vector2(.1f, 0f);
-                    }
+                    gameObject.GetComponentInChildren<SpriteRenderer>().sprite = left_slide;
                 }
-            }
-            else
-            {
-                velocity_zero_timer = 0f;
+                else if (playerRigidbody.velocity.x > 0f)
+                {
+                    gameObject.GetComponentInChildren<SpriteRenderer>().sprite = right_slide;
+                }
             }
         }
     }
@@ -127,6 +118,10 @@ public class OnHoldContact : MonoBehaviour {
             drop.Play();
             canTap = true;
         }
+        else if (collision.CompareTag("platform_edge"))
+        {
+            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -0.1f);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -139,14 +134,7 @@ public class OnHoldContact : MonoBehaviour {
             transform.rotation = new Quaternion(0f, 0f, collision.gameObject.transform.rotation.z, Quaternion.identity[3]);
             playerRigidbody.freezeRotation = true;
             // put the transition to slide sprite here //
-            if (collision.gameObject.transform.rotation.z > 0f)
-            {
-                gameObject.GetComponentInChildren<SpriteRenderer>().sprite = left_slide;
-            }
-            else if (collision.gameObject.transform.rotation.z < 0f)
-            {
-                gameObject.GetComponentInChildren<SpriteRenderer>().sprite = right_slide;
-            }
+            
 
             Debug.Log("platform");
         }

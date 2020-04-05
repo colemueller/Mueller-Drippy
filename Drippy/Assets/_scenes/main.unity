@@ -5651,6 +5651,18 @@ PrefabInstance:
       propertyPath: parentObj
       value: 
       objectReference: {fileID: 1007631217}
+    - target: {fileID: 333406885, guid: e1f9086e278b7e14a894638e9bc9895a, type: 3}
+      propertyPath: friction_mtl_0
+      value: 
+      objectReference: {fileID: 6200000, guid: 6e84b75e6c58ae4498e49f2c4893d479, type: 2}
+    - target: {fileID: 333406885, guid: e1f9086e278b7e14a894638e9bc9895a, type: 3}
+      propertyPath: friction_mtl_2
+      value: 
+      objectReference: {fileID: 6200000, guid: 4b39990b7da999f4bae685b93e195dd1, type: 2}
+    - target: {fileID: 333406885, guid: e1f9086e278b7e14a894638e9bc9895a, type: 3}
+      propertyPath: friction_mtl_4
+      value: 
+      objectReference: {fileID: 6200000, guid: 876ea02f3cd5e284094a87ca83b60f05, type: 2}
     - target: {fileID: 2346055009306725939, guid: e1f9086e278b7e14a894638e9bc9895a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

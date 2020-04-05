@@ -7,6 +7,9 @@ public class Generate : MonoBehaviour {
     public GameObject holdPrefab;
     public GameObject platformPrefab;
     public Transform parentObj;
+    public PhysicsMaterial2D friction_mtl_0;
+    public PhysicsMaterial2D friction_mtl_2;
+    public PhysicsMaterial2D friction_mtl_4;
 
     private int spawnNum = 5;
     private int dot_streak = 0;
@@ -31,11 +34,11 @@ public class Generate : MonoBehaviour {
                 platform_streak += 1;
                 dot_streak = 0;
                 if (randx >= 0) {
-                    GeneratePlatform(randx, 0f, 60f);
+                    GeneratePlatform(randx, 0f, 50f);
                 }
                 else
                 {
-                    GeneratePlatform(randx, -60f, 0f);
+                    GeneratePlatform(randx, -50f, 0f);
                 }
             } 
             else 
@@ -59,6 +62,21 @@ public class Generate : MonoBehaviour {
     {
         float rot = Random.Range(angle_min, angle_max);
         GameObject clone = Instantiate(platformPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.Euler(0f, 0f, rot)) as GameObject;
+        if (Mathf.Abs(rot) <= 15) 
+        {
+            clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_0;
+            clone.GetComponent<Rigidbody2D>().sharedMaterial = friction_mtl_0;
+        }
+        else if (Mathf.Abs(rot) > 15 && Mathf.Abs(rot) <= 25)
+        {
+            clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_2;
+            clone.GetComponent<Rigidbody2D>().sharedMaterial = friction_mtl_2;
+        }
+        else
+        {
+            clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_4;
+            clone.GetComponent<Rigidbody2D>().sharedMaterial = friction_mtl_4;
+        }
         clone.transform.SetParent(parentObj);
     }
 
