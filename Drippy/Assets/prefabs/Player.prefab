@@ -75,7 +75,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &3433850607362287476
 MonoBehaviour:
@@ -91,8 +91,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swaySpeed: 5
   swayDistance: 60
+  maxFallSpeed: 10
+  maxSideSpeed: 8
   x_force_mult: 3.5
   y_force_mult: 0.5
+  neutral: {fileID: 0}
+  left_slide: {fileID: 0}
+  right_slide: {fileID: 0}
 --- !u!82 &3433850607362287477
 AudioSource:
   m_ObjectHideFlags: 0

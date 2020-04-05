@@ -5484,13 +5484,13 @@ PrefabInstance:
         type: 3}
       propertyPath: left_slide
       value: 
-      objectReference: {fileID: 21300000, guid: 79fde889e12a8ad46ade1bac7b2413c9,
+      objectReference: {fileID: 21300000, guid: 314a854ac18ef4c41bed636ee76f1a16,
         type: 3}
     - target: {fileID: 3433850607362287476, guid: 8bfec237c7cde3044b94f8ee7149647b,
         type: 3}
       propertyPath: right_slide
       value: 
-      objectReference: {fileID: 21300000, guid: b688e264659bde94eb80b26decbbff14,
+      objectReference: {fileID: 21300000, guid: 9ca58f9699bcbe4429f8a99accc03d3d,
         type: 3}
     - target: {fileID: 3433850607362287479, guid: 8bfec237c7cde3044b94f8ee7149647b,
         type: 3}

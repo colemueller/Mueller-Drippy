@@ -45,10 +45,10 @@ public class OnHoldContact : MonoBehaviour {
         score = Mathf.RoundToInt(score);
         score = Mathf.Abs(score);
         Score._score = (int)score;
-        //scoreText.text = "Score: " + score.ToString() + "m";
 
         if (doSway)
         {
+            gameObject.GetComponentInChildren<SpriteRenderer>().sprite = neutral;
             playerRigidbody.angularVelocity = 0f;
             // sway based on sin wave
             transform.localEulerAngles = new Vector3(0, 0, Mathf.Sin(Time.time * swaySpeed) * swayDistance);
@@ -99,6 +99,10 @@ public class OnHoldContact : MonoBehaviour {
                     gameObject.GetComponentInChildren<SpriteRenderer>().sprite = right_slide;
                 }
             }
+            else
+            {
+                gameObject.GetComponentInChildren<SpriteRenderer>().sprite = neutral;
+            }
         }
     }
 
@@ -118,10 +122,6 @@ public class OnHoldContact : MonoBehaviour {
             drop.Play();
             canTap = true;
         }
-        else if (collision.CompareTag("platform_edge"))
-        {
-            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -0.1f);
-        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -133,8 +133,6 @@ public class OnHoldContact : MonoBehaviour {
             playerRigidbody.angularVelocity = 0f;
             transform.rotation = new Quaternion(0f, 0f, collision.gameObject.transform.rotation.z, Quaternion.identity[3]);
             playerRigidbody.freezeRotation = true;
-            // put the transition to slide sprite here //
-            
 
             Debug.Log("platform");
         }
@@ -145,7 +143,6 @@ public class OnHoldContact : MonoBehaviour {
         if (collision.CompareTag("platform_edge"))
         {
             on_platform = false;
-            // put the transition back to falling sprite here
             gameObject.GetComponentInChildren<SpriteRenderer>().sprite = neutral;
             playerRigidbody.freezeRotation = false;
             playerRigidbody.angularVelocity = 90f;
