@@ -5502,6 +5502,11 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3433850607362287479, guid: 8bfec237c7cde3044b94f8ee7149647b,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3433850608787816324, guid: 8bfec237c7cde3044b94f8ee7149647b,
         type: 3}
       propertyPath: m_Sprite
@@ -5781,5 +5786,10 @@ PrefabInstance:
       propertyPath: rain
       value: 
       objectReference: {fileID: 59330847}
+    - target: {fileID: 2532565482727292108, guid: e1f9086e278b7e14a894638e9bc9895a,
+        type: 3}
+      propertyPath: startHold
+      value: 
+      objectReference: {fileID: 82030427}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1f9086e278b7e14a894638e9bc9895a, type: 3}

@@ -17,6 +17,9 @@ public class StartGame : MonoBehaviour
     public float moveDist;
     private bool moveBack = false;
     private float startTime;
+    public Transform startHold;
+    private int randStart;
+
 
     void Awake()
     {
@@ -29,6 +32,8 @@ public class StartGame : MonoBehaviour
         }
         else
         {
+            randStart = Random.Range(0,2)*2-1;
+            print(randStart);
             moveDrippy = true;
             scoreGO.SetActive(false);
         }
@@ -39,7 +44,7 @@ public class StartGame : MonoBehaviour
     {
         if(moveDrippy)
         {
-            if(moveBack)
+            /* if(moveBack)
             {
                 float t = (Time.time - startTime) / 1f;
                 playerTrans.position = new Vector3(Mathf.SmoothStep(playerTrans.position.x, 0, t),playerTrans.position.y,1);
@@ -52,24 +57,25 @@ public class StartGame : MonoBehaviour
                 }
             }
             else
-            {
+            { */
                 playerTrans.localEulerAngles = new Vector3(0, 0, Mathf.Sin(Time.time * rotSpeed) * 40);
                 //playerTrans.localEulerAngles = new Vector3(0,0,playerTrans.localEulerAngles.z + rotSpeed);
-                playerTrans.position = new Vector3((Mathf.Sin(Time.time * moveSpeed) * moveDist),playerTrans.position.y,1);
-            }
-            
+                playerTrans.position = new Vector3((Mathf.Sin(Time.time * moveSpeed) * moveDist) * randStart,playerTrans.position.y,1);
+            //}
             
         }
     }
 
-    public void MoveBack()
+    /* public void MoveBack()
     {
         moveBack = true;
         startTime = Time.time;
-    }
+    } */
 
     public void OnStartPress()
     {
+        moveDrippy = false;
+        startHold.position = new Vector3(playerTrans.position.x,startHold.position.y,startHold.position.z);
         startMenu.SetActive(false);
         playerRB.gravityScale = 1;
         music.Play();
