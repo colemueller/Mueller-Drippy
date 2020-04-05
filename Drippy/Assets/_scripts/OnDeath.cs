@@ -14,10 +14,12 @@ public class OnDeath : MonoBehaviour
     private int newHighscoreNum;
     private bool doWiggle = false;
     private RectTransform wiggleMe = null;
+    private Text MainText;
 
     public void SetUp()
     {
         EventManager.StartListening("death", InvokeDeath);
+        MainText = this.transform.Find("MainText").GetComponent<Text>();
         this.gameObject.SetActive(false);
     }
 
@@ -48,6 +50,7 @@ public class OnDeath : MonoBehaviour
         {
             scores[i-1].text = i.ToString() + ". " + PlayerPrefs.GetInt("HighScore_"+i.ToString()) + "m";
         }
+        MainText.text = currScore.ToString() + " m";
         this.gameObject.SetActive(true);
         if(setNewHighScore)
         {
