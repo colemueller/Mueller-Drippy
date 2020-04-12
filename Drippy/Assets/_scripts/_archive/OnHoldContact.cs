@@ -26,6 +26,8 @@ public class OnHoldContact : MonoBehaviour {
     public float maxSideSpeed = 8f;
     public float x_force_mult = 3.5f;
     public float y_force_mult = .5f;
+    public ParticleSystem splash_particles_left;
+    public ParticleSystem splash_particles_right;
     public Sprite neutral;
     public Sprite left_slide;
     public Sprite right_slide;
@@ -133,6 +135,13 @@ public class OnHoldContact : MonoBehaviour {
             playerRigidbody.angularVelocity = 0f;
             transform.rotation = new Quaternion(0f, 0f, collision.gameObject.transform.rotation.z, Quaternion.identity[3]);
             playerRigidbody.freezeRotation = true;
+            if (splash_particles_left.isPlaying || splash_particles_right.isPlaying)
+            {
+                splash_particles_left.Stop();
+                splash_particles_right.Stop();
+            }
+            splash_particles_left.Play();
+            splash_particles_right.Play();
 
             Debug.Log("platform");
         }
