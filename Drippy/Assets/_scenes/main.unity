@@ -189,12 +189,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a307a7a7ee87b844cb713fa398e7a754, type: 3}
---- !u!198 &33450946 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1563535720147965005, guid: 8bfec237c7cde3044b94f8ee7149647b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1072477496}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &59330846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5443,7 +5437,7 @@ PrefabInstance:
     - target: {fileID: 3433850607362287472, guid: 8bfec237c7cde3044b94f8ee7149647b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.1
+      value: 4.1000004
       objectReference: {fileID: 0}
     - target: {fileID: 3433850607362287472, guid: 8bfec237c7cde3044b94f8ee7149647b,
         type: 3}
@@ -5522,12 +5516,12 @@ PrefabInstance:
         type: 3}
       propertyPath: splash_particles_right
       value: 
-      objectReference: {fileID: 33450946}
+      objectReference: {fileID: 0}
     - target: {fileID: 3433850607362287476, guid: 8bfec237c7cde3044b94f8ee7149647b,
         type: 3}
       propertyPath: splash_particles_left
       value: 
-      objectReference: {fileID: 1288900307}
+      objectReference: {fileID: 0}
     - target: {fileID: 3433850607362287479, guid: 8bfec237c7cde3044b94f8ee7149647b,
         type: 3}
       propertyPath: m_AngularDrag
@@ -5571,12 +5565,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bfec237c7cde3044b94f8ee7149647b, type: 3}
---- !u!198 &1288900307 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2537107263773922663, guid: 8bfec237c7cde3044b94f8ee7149647b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1072477496}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1607639787 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3433850607362287476, guid: 8bfec237c7cde3044b94f8ee7149647b,

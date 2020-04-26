@@ -18,6 +18,7 @@ public class OnHoldContact : MonoBehaviour {
     private RectTransform myTransform;
     private float velocity_zero_timer = 0f;
     private Vector3 startScale;
+    private ParticleSystem[] splash_particles;
     private bool on_platform = false;
     bool canTap = false;
     public float swaySpeed = 5;
@@ -26,8 +27,6 @@ public class OnHoldContact : MonoBehaviour {
     public float maxSideSpeed = 8f;
     public float x_force_mult = 3.5f;
     public float y_force_mult = .5f;
-    public ParticleSystem splash_particles_left;
-    public ParticleSystem splash_particles_right;
     public Sprite neutral;
     public Sprite left_slide;
     public Sprite right_slide;
@@ -135,13 +134,19 @@ public class OnHoldContact : MonoBehaviour {
             playerRigidbody.angularVelocity = 0f;
             transform.rotation = new Quaternion(0f, 0f, collision.gameObject.transform.rotation.z, Quaternion.identity[3]);
             playerRigidbody.freezeRotation = true;
-            if (splash_particles_left.isPlaying || splash_particles_right.isPlaying)
+
+            // Determine how much to move drippy up so he doesn't rotate through the platform
+            Vector3 contact_point = collision.GetContact(0).point;
+            float offset = .5f - (playerRigidbody.transform.position.y - contact_point.y);
+            transform.position = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
+
+            // Splashy splash when hit platform
+            splash_particles = currentPlatform.GetComponentsInChildren<ParticleSystem>();
+            foreach(ParticleSystem p in splash_particles)
             {
-                splash_particles_left.Stop();
-                splash_particles_right.Stop();
+                p.transform.position = contact_point;
+                p.Play();
             }
-            splash_particles_left.Play();
-            splash_particles_right.Play();
 
             Debug.Log("platform");
         }
