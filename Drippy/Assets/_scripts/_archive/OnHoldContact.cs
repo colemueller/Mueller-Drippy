@@ -137,7 +137,9 @@ public class OnHoldContact : MonoBehaviour {
 
             // Determine how much to move drippy up so he doesn't rotate through the platform
             Vector3 contact_point = collision.GetContact(0).point;
-            float offset = .5f - (playerRigidbody.transform.position.y - contact_point.y);
+            float yOffset = transform.position.y - contact_point.y;
+            if(yOffset > .5f)yOffset = .5f;
+            float offset = .5f - yOffset;
             transform.position = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
 
             // Splashy splash when hit platform
