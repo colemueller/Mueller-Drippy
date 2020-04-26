@@ -160,6 +160,9 @@ MonoBehaviour:
   platformPrefab: {fileID: 7371798165692503799, guid: 0d252d73f34d53147a2df90bb8d40092,
     type: 3}
   parentObj: {fileID: 0}
+  friction_mtl_0: {fileID: 6200000, guid: 6e84b75e6c58ae4498e49f2c4893d479, type: 2}
+  friction_mtl_2: {fileID: 6200000, guid: 4b39990b7da999f4bae685b93e195dd1, type: 2}
+  friction_mtl_4: {fileID: 6200000, guid: 876ea02f3cd5e284094a87ca83b60f05, type: 2}
 --- !u!1 &1473095367
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +738,7 @@ PrefabInstance:
     - target: {fileID: 406059336421294849, guid: 86e36a0b2952447489a8044d445d47a8,
         type: 3}
       propertyPath: m_Text
-      value: v 1.4
+      value: v 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 406059336891541891, guid: 86e36a0b2952447489a8044d445d47a8,
         type: 3}
