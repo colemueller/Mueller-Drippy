@@ -95,11 +95,6 @@ MonoBehaviour:
   maxSideSpeed: 8
   x_force_mult: 3.5
   y_force_mult: 0.5
-  splash_particles_left: {fileID: 0}
-  splash_particles_right: {fileID: 0}
-  neutral: {fileID: 21300000, guid: 81a1c6518f5974647ba7f1e24de25519, type: 3}
-  left_slide: {fileID: 21300000, guid: 314a854ac18ef4c41bed636ee76f1a16, type: 3}
-  right_slide: {fileID: 21300000, guid: 9ca58f9699bcbe4429f8a99accc03d3d, type: 3}
 --- !u!82 &3433850607362287477
 AudioSource:
   m_ObjectHideFlags: 0
@@ -206,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3433850608787816325}
   - component: {fileID: 3433850608787816324}
+  - component: {fileID: 7588398039187914062}
   m_Layer: 0
   m_Name: render
   m_TagString: Untagged
@@ -276,3 +272,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7588398039187914062
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3433850608787816326}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4cf02b1ad1fc63743bec08937a041bef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

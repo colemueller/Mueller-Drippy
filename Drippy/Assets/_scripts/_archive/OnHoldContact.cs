@@ -19,7 +19,9 @@ public class OnHoldContact : MonoBehaviour {
     private float velocity_zero_timer = 0f;
     private Vector3 startScale;
     private ParticleSystem[] splash_particles;
+    private ParticleSystem cloud_puff_particles;
     private bool on_platform = false;
+    private Animator player_animator;
     bool canTap = false;
     public float swaySpeed = 5;
     public float swayDistance = 60;
@@ -27,9 +29,6 @@ public class OnHoldContact : MonoBehaviour {
     public float maxSideSpeed = 8f;
     public float x_force_mult = 3.5f;
     public float y_force_mult = .5f;
-    public Sprite neutral;
-    public Sprite left_slide;
-    public Sprite right_slide;
 
     private void Awake()
     {
@@ -37,6 +36,7 @@ public class OnHoldContact : MonoBehaviour {
         drop = GetComponent<AudioSource>();
         myTransform = this.GetComponent<RectTransform>();
         startScale = transform.localScale;
+        player_animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -49,7 +49,6 @@ public class OnHoldContact : MonoBehaviour {
 
         if (doSway)
         {
-            gameObject.GetComponentInChildren<SpriteRenderer>().sprite = neutral;
             playerRigidbody.angularVelocity = 0f;
             // sway based on sin wave
             transform.localEulerAngles = new Vector3(0, 0, Mathf.Sin(Time.time * swaySpeed) * swayDistance);
@@ -93,16 +92,36 @@ public class OnHoldContact : MonoBehaviour {
             {
                 if (playerRigidbody.velocity.x < 0f)
                 {
-                    gameObject.GetComponentInChildren<SpriteRenderer>().sprite = left_slide;
+                    // animate to left slide
+                    player_animator.ResetTrigger("left_to_fall_trigger");
+                    player_animator.SetTrigger("left_drip_trigger");
                 }
                 else if (playerRigidbody.velocity.x > 0f)
                 {
-                    gameObject.GetComponentInChildren<SpriteRenderer>().sprite = right_slide;
+                    // animate to right slide
+                    player_animator.ResetTrigger("right_to_fall_trigger");
+                    player_animator.SetTrigger("right_drip_trigger");
                 }
+                player_animator.SetFloat("velocity_flip", playerRigidbody.velocity.x);
             }
             else
             {
-                gameObject.GetComponentInChildren<SpriteRenderer>().sprite = neutral;
+                // animate to fall
+                if (player_animator.GetCurrentAnimatorStateInfo(0).IsName("left_slide"))
+                {
+                    player_animator.ResetTrigger("left_drip_trigger");
+                    player_animator.ResetTrigger("right_drip_trigger");
+
+                    player_animator.SetTrigger("left_to_fall_trigger");
+                }
+                else if (player_animator.GetCurrentAnimatorStateInfo(0).IsName("right_slide"))
+                {
+                    player_animator.ResetTrigger("left_drip_trigger");
+                    player_animator.ResetTrigger("right_drip_trigger");
+
+                    player_animator.SetTrigger("right_to_fall_trigger");
+                }
+                
             }
         }
     }
@@ -113,7 +132,10 @@ public class OnHoldContact : MonoBehaviour {
         {
             currentHold = collision.gameObject;
             
-            //cam.GetComponent<CameraFollow>().enabled = false;
+            // puffy puff when hit hold
+            cloud_puff_particles = currentHold.GetComponentInChildren<ParticleSystem>();
+            cloud_puff_particles.Play();
+
             GetComponent<CircleCollider2D>().enabled = false;
             doSway = true;
             transform.position = new Vector3(currentHold.transform.position.x, currentHold.transform.position.y, transform.position.z);
@@ -159,7 +181,6 @@ public class OnHoldContact : MonoBehaviour {
         if (collision.CompareTag("platform_edge"))
         {
             on_platform = false;
-            gameObject.GetComponentInChildren<SpriteRenderer>().sprite = neutral;
             playerRigidbody.freezeRotation = false;
             playerRigidbody.angularVelocity = 90f;
         }

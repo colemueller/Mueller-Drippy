@@ -20,7 +20,7 @@ public class OnDeath : MonoBehaviour
     {
         EventManager.StartListening("death", InvokeDeath);
         MainText = this.transform.Find("MainText").GetComponent<Text>();
-        this.gameObject.SetActive(false);
+        this.gameObject.SetActive(true);
     }
 
     void Update()
