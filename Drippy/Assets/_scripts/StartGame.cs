@@ -10,7 +10,7 @@ public class StartGame : MonoBehaviour
     private RectTransform playerTrans;
     public AudioSource music;
     public AudioSource rain;
-    public GameObject scoreGO;
+    public GameObject InGameUI;
     private bool moveDrippy = true;
     public float rotSpeed;
     public float moveSpeed;
@@ -35,7 +35,7 @@ public class StartGame : MonoBehaviour
             randStart = Random.Range(0,2)*2-1;
             print(randStart);
             moveDrippy = true;
-            scoreGO.SetActive(false);
+            InGameUI.SetActive(false);
         }
     }
 
@@ -80,6 +80,6 @@ public class StartGame : MonoBehaviour
         playerRB.gravityScale = 1;
         music.Play();
         rain.volume = 0.5f;
-        scoreGO.SetActive(true);
+        InGameUI.SetActive(true);
     }
 }

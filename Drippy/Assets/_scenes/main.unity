@@ -5132,7 +5132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b2df05acf01394a84e832e2bd14b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathMenuScr: {fileID: 1656879249}
+  deathMenuScr: {fileID: 1799556244}
 --- !u!4 &750817134
 Transform:
   m_ObjectHideFlags: 0
@@ -5577,9 +5577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29c6d11a5ac2ac44bc5c0c03c1ac0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1656879249 stripped
+--- !u!114 &1799556244 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 695827759796814787, guid: e1f9086e278b7e14a894638e9bc9895a,
+  m_CorrespondingSourceObject: {fileID: 2532565481295325003, guid: e1f9086e278b7e14a894638e9bc9895a,
     type: 3}
   m_PrefabInstance: {fileID: 2532565482735393624}
   m_PrefabAsset: {fileID: 0}
