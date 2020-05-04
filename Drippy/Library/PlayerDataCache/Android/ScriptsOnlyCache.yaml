@@ -10,14 +10,6 @@ ScriptsOnlyBuild:
     - OnHoldContact
     - Score
     - StartGame
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -28,6 +20,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/_scenes/main.unity:
@@ -66,37 +59,39 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9704}
+      Script: {instanceID: 9678}
     - Class: 114
-      Script: {instanceID: 9810}
+      Script: {instanceID: 9784}
     - Class: 114
-      Script: {instanceID: 9864}
+      Script: {instanceID: 9838}
     - Class: 114
-      Script: {instanceID: 9904}
+      Script: {instanceID: 9878}
     - Class: 114
-      Script: {instanceID: 10166}
+      Script: {instanceID: 10140}
     - Class: 114
-      Script: {instanceID: 10290}
+      Script: {instanceID: 10264}
     - Class: 114
-      Script: {instanceID: 10304}
+      Script: {instanceID: 10278}
     - Class: 114
-      Script: {instanceID: 10494}
+      Script: {instanceID: 10468}
     - Class: 114
-      Script: {instanceID: 10512}
+      Script: {instanceID: 10486}
     - Class: 114
-      Script: {instanceID: 10646}
+      Script: {instanceID: 10620}
     - Class: 114
-      Script: {instanceID: 10664}
+      Script: {instanceID: 10638}
     - Class: 114
-      Script: {instanceID: 10712}
+      Script: {instanceID: 10686}
     - Class: 114
-      Script: {instanceID: 11110}
+      Script: {instanceID: 11084}
     - Class: 114
-      Script: {instanceID: 11342}
+      Script: {instanceID: 11316}
     - Class: 114
-      Script: {instanceID: 11466}
+      Script: {instanceID: 11440}
     - Class: 114
-      Script: {instanceID: 11500}
+      Script: {instanceID: 11472}
+    - Class: 114
+      Script: {instanceID: 11474}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -360,7 +355,7 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: 74f54b68479f34ee00318c32354fe4f5
+      Hash: cca3a61429b01571d4cc6d681993f7c1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ButtonFunctions
@@ -408,7 +403,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 2c7b4bcfe3b5507d3722da0f6d14e01b
+      Hash: 6baba819393eb12882a51f7c546792da
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StartGame
@@ -625,4 +620,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/_scenes/main.unity
-  playerPath: C:/Users/Andre/Documents/_3D/Drippy/Mueller-Drippy/Drippy/drippy_v1.6.apk
+  playerPath: C:/Users/Cole/Desktop/Drippy_v1.6.apk
