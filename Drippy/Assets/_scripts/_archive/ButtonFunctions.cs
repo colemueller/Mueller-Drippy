@@ -7,9 +7,13 @@ using UnityEngine.UI;
 public class ButtonFunctions : MonoBehaviour {
 
     private AudioSource[] allAudioSources;
+    public AudioSource rain;
     public Sprite audio_playSprite;
     public Sprite audio_muteSprite;
     public Image muteBtnImage;
+
+    public GameObject StartMenu, OptionsMenu, CreditsMenu;
+    public Slider musicVolSlider, sfxVolSlider, ambientVolSlider;
 
     public void Start()
     {
@@ -28,6 +32,10 @@ public class ButtonFunctions : MonoBehaviour {
             }
             muteBtnImage.sprite = audio_playSprite;
         }
+
+        musicVolSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        sfxVolSlider.value = PlayerPrefs.GetFloat("SfxVolume");
+        ambientVolSlider.value = PlayerPrefs.GetFloat("AmbientVolume");
     }
 
     public void Restart(bool isStart)
@@ -68,4 +76,33 @@ public class ButtonFunctions : MonoBehaviour {
             audioS.mute = tmp;
         }
     }
+
+    public void ShowOptions(bool show)
+    {
+        //print(show);
+        StartMenu.SetActive(!show);
+        OptionsMenu.SetActive(show);
+    }
+
+    public void ShowCredits(bool show)
+    {
+        
+        OptionsMenu.SetActive(!show);
+        CreditsMenu.SetActive(show);
+    }
+
+    public void UpdateMusicVol(float val)
+    {
+        PlayerPrefs.SetFloat("MusicVolume",val);
+    }
+    public void UpdateSfxVol(float val)
+    {
+        PlayerPrefs.SetFloat("SfxVolume",val);
+    }
+    public void UpdateAmbientVol(float val)
+    {
+        PlayerPrefs.SetFloat("AmbientVolume",val);
+        rain.volume = val;
+    }
+    
 }

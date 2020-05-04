@@ -10,6 +10,7 @@ public class StartGame : MonoBehaviour
     private RectTransform playerTrans;
     public AudioSource music;
     public AudioSource rain;
+    public AudioSource drop;
     public GameObject InGameUI;
     private bool moveDrippy = true;
     public float rotSpeed;
@@ -23,6 +24,17 @@ public class StartGame : MonoBehaviour
 
     void Awake()
     {
+        if(!PlayerPrefs.HasKey("MusicVolume"))
+        {
+            PlayerPrefs.SetFloat("MusicVolume",0.8f);
+            PlayerPrefs.SetFloat("SfxVolume",0.8f);
+            PlayerPrefs.SetFloat("AmbientVolume",0.8f);
+        }
+
+        rain.volume = PlayerPrefs.GetFloat("AmbientVolume");
+        rain.Play();
+        drop.volume = PlayerPrefs.GetFloat("SfxVolume");
+
         startMenu = this.gameObject;
         playerTrans = playerRB.gameObject.GetComponent<RectTransform>();
         if(isStart == false)
@@ -33,7 +45,7 @@ public class StartGame : MonoBehaviour
         else
         {
             randStart = Random.Range(0,2)*2-1;
-            print(randStart);
+            //print(randStart);
             moveDrippy = true;
             InGameUI.SetActive(false);
         }
@@ -78,8 +90,14 @@ public class StartGame : MonoBehaviour
         startHold.position = new Vector3(playerTrans.position.x,startHold.position.y,startHold.position.z);
         startMenu.SetActive(false);
         playerRB.gravityScale = 1;
-        music.Play();
-        rain.volume = 0.5f;
+        if(PlayerPrefs.GetFloat("MusicVolume") != 0.0f)
+        {
+            music.volume = PlayerPrefs.GetFloat("MusicVolume");
+            //print(music.volume);
+            music.Play();
+        }
+        drop.volume = PlayerPrefs.GetFloat("SfxVolume");
+        //rain.volume = 0.5f;
         InGameUI.SetActive(true);
     }
 }
