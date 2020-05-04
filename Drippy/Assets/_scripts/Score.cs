@@ -41,4 +41,12 @@ public class Score : MonoBehaviour
             }
         }
     }
+
+    public void ClearScores()
+    {
+        for(int i = 1; i <= 5; i++)
+        {
+            PlayerPrefs.SetInt("HighScore_"+i.ToString(),0);
+        }
+    }
 }
