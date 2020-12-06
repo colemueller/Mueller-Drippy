@@ -1,0 +1,14 @@
+-Platform Interaction thingy
+	- need spawning tweaks
+
+-Velocity squash and stretch
+
+-velocity bg distort
+
+-Ad support 
+
+-Google Analytics
+
+-Make apple developer account
+
+-Add 1 enemy
