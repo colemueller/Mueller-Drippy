@@ -182,7 +182,7 @@ public class OnHoldContact : MonoBehaviour {
         {
             on_platform = false;
             playerRigidbody.freezeRotation = false;
-            playerRigidbody.angularVelocity = 90f;
+            //playerRigidbody.angularVelocity = 90f;
         }
     }
 
