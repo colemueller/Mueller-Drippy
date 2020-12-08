@@ -121,7 +121,21 @@ public class OnHoldContact : MonoBehaviour {
 
                     player_animator.SetTrigger("right_to_fall_trigger");
                 }
-                
+                if (this.GetComponent<RectTransform>().eulerAngles.z != 0f)
+                {
+                    if (180f > this.GetComponent<RectTransform>().eulerAngles.z && this.GetComponent<RectTransform>().eulerAngles.z > 0f)
+                    {
+                        this.GetComponent<RectTransform>().eulerAngles = new Vector3(this.GetComponent<RectTransform>().eulerAngles.x,
+                                                                                    this.GetComponent<RectTransform>().eulerAngles.y,
+                                                                                    this.GetComponent<RectTransform>().eulerAngles.z - .25f);
+                    }
+                    if (this.GetComponent<RectTransform>().eulerAngles.z < 360f && this.GetComponent<RectTransform>().eulerAngles.z > 180f)
+                    {
+                        this.GetComponent<RectTransform>().eulerAngles = new Vector3(this.GetComponent<RectTransform>().eulerAngles.x,
+                                                                                    this.GetComponent<RectTransform>().eulerAngles.y,
+                                                                                    this.GetComponent<RectTransform>().eulerAngles.z + .25f);
+                    }
+                }
             }
         }
     }
@@ -209,7 +223,7 @@ public class OnHoldContact : MonoBehaviour {
             playerRigidbody.velocity = new Vector2(Mathf.Cos(Mathf.Deg2Rad*(transform.localEulerAngles.z-90f))*x_force_mult*swing_mult,
                                                    (Mathf.Abs(Mathf.Cos(Mathf.Deg2Rad*(transform.localEulerAngles.z-90f)))+y_force_mult)*2f*swing_mult);
             // decides how much the player rotates when letting go of a hold (purely visual, doesn't do anything physically)
-            playerRigidbody.angularVelocity = playerRigidbody.velocity.x * 150f;
+            // playerRigidbody.angularVelocity = playerRigidbody.velocity.x * 150f;
             canTap = false;
         }
     }
