@@ -5584,7 +5584,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd8560b5fa833144839fa8c139e5f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shake_amt: 0.01
+  main_camera: {fileID: 763154511}
+  max_shake: 1
 --- !u!212 &1349691819 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6515089293740127960, guid: e1f9086e278b7e14a894638e9bc9895a,

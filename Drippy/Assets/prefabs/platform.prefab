@@ -4960,7 +4960,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7371798165692503799}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 6e84b75e6c58ae4498e49f2c4893d479, type: 2}
   m_IsTrigger: 0
