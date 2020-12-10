@@ -29,6 +29,10 @@ public class OnHoldContact : MonoBehaviour {
     public float maxSideSpeed = 8f;
     public float x_force_mult = 3.5f;
     public float y_force_mult = .5f;
+    private Vector3 cam_pos;
+    public float max_shake = 1f;
+    private float min_shake;
+    private bool shake_left;
 
     private void Awake()
     {
@@ -37,11 +41,60 @@ public class OnHoldContact : MonoBehaviour {
         myTransform = this.GetComponent<RectTransform>();
         startScale = transform.localScale;
         player_animator = gameObject.GetComponentInChildren<Animator>();
+        cam_pos = new Vector3(0, (myTransform.position.y - 3.5f), 0);
+        min_shake = -max_shake;
+        shake_left = true;
     }
 
     private void Update()
     {
-        Camera.main.transform.position = new Vector3(0, (myTransform.position.y - 3.5f), 0);
+        max_shake = playerRigidbody.velocity.y.Remap(-10f, -20f, .005f, .01f);
+        if (playerRigidbody.velocity.y / -maxFallSpeed >= .5f)
+        {
+            Vector3 new_pos = cam_pos;
+            float inc = max_shake / 2f;
+            if (shake_left)
+            {
+                if (new_pos.x <= min_shake)
+                {
+                    shake_left = false;
+                }
+                else
+                {
+                    inc *= -1f;
+                }
+            }
+            else
+            {
+                if (new_pos.x >= max_shake)
+                {
+                    shake_left = true;
+                }
+                else
+                {
+                    inc *= 1f;
+                }
+            }
+            Debug.Log(inc);
+            new_pos = new Vector3(cam_pos.x + inc, cam_pos.y, cam_pos.z);
+
+            if (cam_pos.z >= max_shake)
+            {
+                inc *= -1f;
+            }
+            else if (cam_pos.z <= min_shake)
+            {
+                inc *= 1f;
+            }
+            new_pos = new Vector3(new_pos.x, cam_pos.y, cam_pos.z + inc);
+            Camera.main.transform.position = new Vector3(new_pos.x, (myTransform.position.y - 3.5f), new_pos.z);
+        }
+        else
+        {
+            Camera.main.transform.position = new Vector3(0, (myTransform.position.y - 3.5f), 0);
+        }
+        cam_pos = Camera.main.transform.position;
+
         score = myTransform.position.y - 3;
         score = Mathf.RoundToInt(score);
         score = Mathf.Abs(score);
@@ -227,4 +280,13 @@ public class OnHoldContact : MonoBehaviour {
             canTap = false;
         }
     }
+}
+
+
+public static class ExtensionMethods {
+ 
+    public static float Remap (this float value, float from1, float to1, float from2, float to2) {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+   
 }

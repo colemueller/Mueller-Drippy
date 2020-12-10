@@ -5518,6 +5518,11 @@ PrefabInstance:
       propertyPath: splash_particles_left
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3433850607362287476, guid: 8bfec237c7cde3044b94f8ee7149647b,
+        type: 3}
+      propertyPath: max_shake
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 3433850607362287477, guid: 8bfec237c7cde3044b94f8ee7149647b,
         type: 3}
       propertyPath: m_Volume
