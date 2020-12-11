@@ -1,9 +1,9 @@
 -Platform Interaction thingy
 	- need spawning tweaks
 
--Velocity squash and stretch
+X (Maybe, if can find a good way to co-exist with spinning)Velocity squash and stretch
 
--velocity bg distort
+X velocity bg distort
 
 -Ad support 
 

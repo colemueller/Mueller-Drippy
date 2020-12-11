@@ -33,6 +33,7 @@ public class OnHoldContact : MonoBehaviour {
     public float max_shake = 1f;
     private float min_shake;
     private bool shake_left;
+    private bool shake_up;
 
     private void Awake()
     {
@@ -44,11 +45,13 @@ public class OnHoldContact : MonoBehaviour {
         cam_pos = new Vector3(0, (myTransform.position.y - 3.5f), 0);
         min_shake = -max_shake;
         shake_left = true;
+        shake_up = true;
     }
 
     private void Update()
     {
-        max_shake = playerRigidbody.velocity.y.Remap(-10f, -20f, .005f, .01f);
+        // factor cam shake from high speed into cam pos
+        max_shake = playerRigidbody.velocity.y.Remap(-10f, -20f, .005f, max_shake);
         if (playerRigidbody.velocity.y / -maxFallSpeed >= .5f)
         {
             Vector3 new_pos = cam_pos;
@@ -75,24 +78,39 @@ public class OnHoldContact : MonoBehaviour {
                     inc *= 1f;
                 }
             }
-            Debug.Log(inc);
             new_pos = new Vector3(cam_pos.x + inc, cam_pos.y, cam_pos.z);
 
-            if (cam_pos.z >= max_shake)
+            inc = max_shake / 5f;
+            if (shake_up)
             {
-                inc *= -1f;
+                if (cam_pos.y >= new_pos.y + max_shake)
+                {
+                    shake_up = false;
+                }
+                else
+                {
+                    inc *= -1f;
+                }
             }
-            else if (cam_pos.z <= min_shake)
+            else
             {
+                if (cam_pos.y <= new_pos.y - max_shake)
+                {
+                    shake_up = true;
+                }
+                else
+                {
                 inc *= 1f;
+                }
             }
-            new_pos = new Vector3(new_pos.x, cam_pos.y, cam_pos.z + inc);
-            Camera.main.transform.position = new Vector3(new_pos.x, (myTransform.position.y - 3.5f), new_pos.z);
+            new_pos = new Vector3(new_pos.x, (myTransform.position.y - 3.5f) + inc, cam_pos.z);
+            Camera.main.transform.position = new Vector3(new_pos.x, new_pos.y, new_pos.z);
         }
         else
         {
             Camera.main.transform.position = new Vector3(0, (myTransform.position.y - 3.5f), 0);
         }
+        // set cam pos
         cam_pos = Camera.main.transform.position;
 
         score = myTransform.position.y - 3;
@@ -249,7 +267,7 @@ public class OnHoldContact : MonoBehaviour {
         {
             on_platform = false;
             playerRigidbody.freezeRotation = false;
-            //playerRigidbody.angularVelocity = 90f;
+            playerRigidbody.angularVelocity = 90f;
         }
     }
 
@@ -276,7 +294,7 @@ public class OnHoldContact : MonoBehaviour {
             playerRigidbody.velocity = new Vector2(Mathf.Cos(Mathf.Deg2Rad*(transform.localEulerAngles.z-90f))*x_force_mult*swing_mult,
                                                    (Mathf.Abs(Mathf.Cos(Mathf.Deg2Rad*(transform.localEulerAngles.z-90f)))+y_force_mult)*2f*swing_mult);
             // decides how much the player rotates when letting go of a hold (purely visual, doesn't do anything physically)
-            // playerRigidbody.angularVelocity = playerRigidbody.velocity.x * 150f;
+            playerRigidbody.angularVelocity = playerRigidbody.velocity.x * 150f;
             canTap = false;
         }
     }

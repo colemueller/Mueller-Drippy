@@ -31,6 +31,6 @@ public class scaleWithVelocity : MonoBehaviour
             x_scale = min_scale;
             y_scale = .6f + min_scale/2f;
         }
-        player_transform.localScale = new Vector3(x_scale, y_scale, 1);
+        //player_transform.localScale = new Vector3(x_scale, y_scale, 1);
     }
 }
