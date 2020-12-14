@@ -110,6 +110,8 @@ public class OnHoldContact : MonoBehaviour {
         {
             Camera.main.transform.position = new Vector3(0, (myTransform.position.y - 3.5f), 0);
         }
+        // end cam shake //
+
         // set cam pos
         cam_pos = Camera.main.transform.position;
 
@@ -245,7 +247,7 @@ public class OnHoldContact : MonoBehaviour {
             // Determine how much to move drippy up so he doesn't rotate through the platform
             Vector3 contact_point = collision.GetContact(0).point;
             float yOffset = transform.position.y - contact_point.y;
-            if(yOffset > .5f)yOffset = .5f;
+            if(yOffset > .5f) yOffset = .5f;
             float offset = .5f - yOffset;
             transform.position = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
 
@@ -256,8 +258,6 @@ public class OnHoldContact : MonoBehaviour {
                 p.transform.position = contact_point;
                 p.Play();
             }
-
-            Debug.Log("platform");
         }
     }
 
@@ -273,6 +273,30 @@ public class OnHoldContact : MonoBehaviour {
 
     public void OnScreenTap()
     {
+        GameObject holds_parent = GameObject.Find("HOLDS");
+        Transform[] platform_transforms = holds_parent.GetComponentsInChildren<Transform>();
+        foreach (Transform platform_transform in platform_transforms)
+        {
+            if (platform_transform.gameObject != null)
+            {
+                if (platform_transform.gameObject.GetComponent<grabRotate>())
+                {
+                    if (platform_transform.gameObject.GetComponent<grabRotate>().moving_platform)
+                    {
+                        canTap = false;
+                    }
+                    else
+                    {
+                        if (doSway)
+                        {
+                            canTap = true;
+                        }
+                    }
+                }
+            }
+
+        }
+        platform_transforms = null;
         if (canTap)
         {
             currentHold.tag = "Untagged";
@@ -297,6 +321,7 @@ public class OnHoldContact : MonoBehaviour {
             playerRigidbody.angularVelocity = playerRigidbody.velocity.x * 150f;
             canTap = false;
         }
+
     }
 }
 

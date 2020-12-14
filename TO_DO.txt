@@ -1,5 +1,6 @@
--Platform Interaction thingy
-	- need spawning tweaks
+X Platform Interaction thingy
+	X need spawning tweaks
+	- Need different "grab" sprite
 
 X (Maybe, if can find a good way to co-exist with spinning)Velocity squash and stretch
 

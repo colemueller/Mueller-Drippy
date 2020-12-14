@@ -89,8 +89,10 @@ public class Generate : MonoBehaviour {
 
     public void GeneratePlatform(float rand, float angle_min, float angle_max)
     {
-        // float rot = Random.Range(angle_min, angle_max);
-        // GameObject clone = Instantiate(platformPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.Euler(0f, 0f, rot)) as GameObject;
+        float rot = Random.Range(angle_min, angle_max);
+        GameObject clone = Instantiate(platformPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.Euler(0f, 0f, rot)) as GameObject;
+        clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_2;
+        clone.GetComponent<Rigidbody2D>().sharedMaterial = friction_mtl_2;
         // if (Mathf.Abs(rot) <= 15) 
         // {
         //     clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_0;
@@ -106,8 +108,11 @@ public class Generate : MonoBehaviour {
         //     clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_4;
         //     clone.GetComponent<Rigidbody2D>().sharedMaterial = friction_mtl_4;
         // }
-        GameObject clone = Instantiate(platformPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.Euler(0f, 0f, 0f)) as GameObject;
         clone.transform.SetParent(parentObj);
+        if (rot > 0f)
+        {
+            clone.transform.localScale = new Vector3(-1f * clone.transform.localScale.x, clone.transform.localScale.y, clone.transform.localScale.z);
+        }
 
         current_color = new Color(current_color[0] + color_change_r, current_color[1] + color_change_g, current_color[2] + color_change_b, 1f);
         // clone.GetComponent<SpriteRenderer>().color = current_color;

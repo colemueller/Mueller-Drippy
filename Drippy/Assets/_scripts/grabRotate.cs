@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class grabRotate : MonoBehaviour
 {
-
+    public bool moving_platform;
+    public float max_rotate = 60f;
     private Collider2D platform_col;
     private Transform platform_transform;
     private Vector3 drag_origin;
@@ -16,6 +17,7 @@ public class grabRotate : MonoBehaviour
         platform_col = this.GetComponentInParent<Collider2D>();
         platform_transform = this.GetComponentsInParent<Transform>()[1];
         new_down = true;
+        moving_platform = false;
     }
 
     // Update is called once per frame
@@ -32,14 +34,34 @@ public class grabRotate : MonoBehaviour
 
             if (platform_col.bounds.Contains(drag_origin))
             {
+                moving_platform = true;
                 drag_dist = Vector2.Angle(drag_origin, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                Debug.Log(this.GetComponentsInParent<Transform>()[1].gameObject.ToString());
-                platform_transform.Rotate(0f, 0f, drag_dist);
+                if (drag_origin.y > Camera.main.ScreenToWorldPoint(Input.mousePosition).y)
+                {
+                    drag_dist *= -1f;
+                }
+                if (platform_transform.localScale.x < 0f)
+                {
+                    drag_dist *= -1f;
+                }
+                if (platform_transform.eulerAngles.z + drag_dist > max_rotate && platform_transform.eulerAngles.z + drag_dist < 180f)
+                {
+                    platform_transform.rotation = Quaternion.Euler(0f, 0f, max_rotate);
+                }
+                else if (platform_transform.eulerAngles.z < 360f - max_rotate && platform_transform.eulerAngles.z + drag_dist > 180f)
+                {
+                    platform_transform.rotation = Quaternion.Euler(0f, 0f, 360f - max_rotate);
+                }
+                else
+                {
+                    platform_transform.Rotate(0f, 0f, drag_dist);
+                }
             }
         }
         else
         {
             new_down = true;
+            moving_platform = false;
         }
     }
 }

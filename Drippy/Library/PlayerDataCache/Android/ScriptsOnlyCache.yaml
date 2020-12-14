@@ -10,6 +10,8 @@ ScriptsOnlyBuild:
     - OnHoldContact
     - Score
     - StartGame
+    - grabRotate
+    - scaleWithVelocity
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -73,25 +75,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10278}
     - Class: 114
-      Script: {instanceID: 10468}
+      Script: {instanceID: 10454}
     - Class: 114
-      Script: {instanceID: 10486}
+      Script: {instanceID: 10470}
     - Class: 114
-      Script: {instanceID: 10620}
+      Script: {instanceID: 10488}
     - Class: 114
-      Script: {instanceID: 10638}
+      Script: {instanceID: 10622}
     - Class: 114
-      Script: {instanceID: 10686}
+      Script: {instanceID: 10640}
     - Class: 114
-      Script: {instanceID: 11084}
+      Script: {instanceID: 10688}
     - Class: 114
-      Script: {instanceID: 11316}
+      Script: {instanceID: 10934}
     - Class: 114
-      Script: {instanceID: 11440}
+      Script: {instanceID: 11088}
     - Class: 114
-      Script: {instanceID: 11472}
+      Script: {instanceID: 11320}
     - Class: 114
-      Script: {instanceID: 11474}
+      Script: {instanceID: 11444}
+    - Class: 114
+      Script: {instanceID: 11476}
+    - Class: 114
+      Script: {instanceID: 11478}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -151,7 +157,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 1548079c7aaec72eb52648589b40da08
+      Hash: 1cae831ddf154d40056fecd2ea66286e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OnHoldContact
@@ -349,6 +355,12 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
+      Hash: 063732bb1540d9ca7b95ed234ab36605
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: grabRotate
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -361,7 +373,7 @@ ScriptsOnlyBuild:
     className: ButtonFunctions
   - hash:
       serializedVersion: 2
-      Hash: 987c10d321bb01f528738fe172b64950
+      Hash: 9bb1b68b31ebfce98855cb3e345c0627
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Generate
@@ -467,6 +479,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraFollow
+  - hash:
+      serializedVersion: 2
+      Hash: b7026d9916d0564eeb27e1bc584caa29
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: scaleWithVelocity
   - hash:
       serializedVersion: 2
       Hash: 3b760e6526e13f7504f59e210145899a
@@ -620,4 +638,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/_scenes/main.unity
-  playerPath: C:/Users/Cole/Desktop/Drippy_v1.6.apk
+  playerPath: C:/Users/Andre/Documents/_3D/Drippy/Mueller-Drippy/Builds/Android/Drippy_v1.7.apk
