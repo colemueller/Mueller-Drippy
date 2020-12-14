@@ -89,23 +89,24 @@ public class Generate : MonoBehaviour {
 
     public void GeneratePlatform(float rand, float angle_min, float angle_max)
     {
-        float rot = Random.Range(angle_min, angle_max);
-        GameObject clone = Instantiate(platformPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.Euler(0f, 0f, rot)) as GameObject;
-        if (Mathf.Abs(rot) <= 15) 
-        {
-            clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_0;
-            clone.GetComponent<Rigidbody2D>().sharedMaterial = friction_mtl_0;
-        }
-        else if (Mathf.Abs(rot) > 15 && Mathf.Abs(rot) <= 25)
-        {
-            clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_2;
-            clone.GetComponent<Rigidbody2D>().sharedMaterial = friction_mtl_2;
-        }
-        else
-        {
-            clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_4;
-            clone.GetComponent<Rigidbody2D>().sharedMaterial = friction_mtl_4;
-        }
+        // float rot = Random.Range(angle_min, angle_max);
+        // GameObject clone = Instantiate(platformPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.Euler(0f, 0f, rot)) as GameObject;
+        // if (Mathf.Abs(rot) <= 15) 
+        // {
+        //     clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_0;
+        //     clone.GetComponent<Rigidbody2D>().sharedMaterial = friction_mtl_0;
+        // }
+        // else if (Mathf.Abs(rot) > 15 && Mathf.Abs(rot) <= 25)
+        // {
+        //     clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_2;
+        //     clone.GetComponent<Rigidbody2D>().sharedMaterial = friction_mtl_2;
+        // }
+        // else
+        // {
+        //     clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_4;
+        //     clone.GetComponent<Rigidbody2D>().sharedMaterial = friction_mtl_4;
+        // }
+        GameObject clone = Instantiate(platformPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.Euler(0f, 0f, 0f)) as GameObject;
         clone.transform.SetParent(parentObj);
 
         current_color = new Color(current_color[0] + color_change_r, current_color[1] + color_change_g, current_color[2] + color_change_b, 1f);
