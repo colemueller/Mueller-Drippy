@@ -22,7 +22,7 @@ public class OnHoldContact : MonoBehaviour {
     private ParticleSystem cloud_puff_particles;
     private bool on_platform = false;
     private Animator player_animator;
-    bool canTap = false;
+    public bool canTap = false;
     public float swaySpeed = 5;
     public float swayDistance = 60;
     public float maxFallSpeed = 10f;

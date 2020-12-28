@@ -14,7 +14,6 @@ ScriptsOnlyBuild:
     - scaleWithVelocity
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -157,7 +156,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 1cae831ddf154d40056fecd2ea66286e
+      Hash: d36a036b0a2dd51eb1c905e590e5b370
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OnHoldContact
@@ -638,4 +637,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/_scenes/main.unity
-  playerPath: C:/Users/Andre/Documents/_3D/Drippy/Mueller-Drippy/Builds/Android/Drippy_v1.7.apk
+  playerPath: C:/Users/Andre/Documents/_3D/Drippy/Mueller-Drippy/Builds/Android/Drippy_v1.8.apk
