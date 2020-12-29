@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 472}
   m_MaxSize: {x: 18004, y: 14022}
   vertical: 0
-  controlID: 507
+  controlID: 468
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -128,10 +128,10 @@ MonoBehaviour:
     y: 0
     width: 908
     height: 947
-  m_MinSize: {x: 202, y: 422}
-  m_MaxSize: {x: 4002, y: 8022}
+  m_MinSize: {x: 202, y: 444}
+  m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 508
+  controlID: 469
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -194,9 +194,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.026631683, y: 3.8074613, z: 0.8535156}
+    m_Target: {x: 0.6921531, y: -27.293043, z: 1.6376953}
     speed: 2
-    m_Value: {x: 0.026631683, y: 3.8074613, z: 0.8535156}
+    m_Value: {x: 0.6921531, y: -27.293043, z: 1.6376953}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -229,9 +229,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 3.185655
+    m_Target: 5.3212757
     speed: 2
-    m_Value: 3.185655
+    m_Value: 5.3212757
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_MinSize: {x: 230, y: 472}
   m_MaxSize: {x: 10000, y: 14022}
   vertical: 1
-  controlID: 474
+  controlID: 394
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -454,20 +454,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_scripts
+    - Assets/sprites/_archive
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/_scripts
+  - Assets/sprites/_archive
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Andre\Documents\_3D\Drippy\Mueller-Drippy\Drippy
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8e2d0000
-    m_LastClickedID: 11662
-    m_ExpandedIDs: 00000000202d0000362d0000382d00008e2d0000022e0000162e00009c2e0000d62e0000662f00009a2f0000b62f000032300000583000006230000000ca9a3b
+    m_SelectedIDs: 342f0000
+    m_LastClickedID: 12084
+    m_ExpandedIDs: 000000001e2d0000342d0000362d00008c2d0000022e0000162e00009c2e0000d62e0000662f00009a2f0000b62f0000323000005a3000006430000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -495,7 +495,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000202d0000362d0000382d00008e2d0000022e0000162e00009c2e0000d62e0000662f00009a2f0000b62f000032300000583000006230000000ca9a3b
+    m_ExpandedIDs: 000000001e2d0000342d0000362d00008c2d0000022e0000162e00009c2e0000d62e0000662f00009a2f0000b62f0000323000005a3000006430000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -520,8 +520,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: d6280000
-    m_LastClickedInstanceID: 10454
+    m_SelectedInstanceIDs: 62310000
+    m_LastClickedInstanceID: 12642
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
@@ -539,7 +539,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -613,5 +613,5 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
-  m_LastInspectedObjectInstanceID: 10454
-  m_LastVerticalScrollValue: 100
+  m_LastInspectedObjectInstanceID: 12642
+  m_LastVerticalScrollValue: 0

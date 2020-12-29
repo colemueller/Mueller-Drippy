@@ -71,10 +71,10 @@ public class grabRotate : MonoBehaviour
             }
             platform_transform.eulerAngles = new Vector3(0f, 0f, angle);
         }
-        else
+        if (Input.GetMouseButtonUp(0))
         {
-            moving_platform = false;
             player.GetComponent<OnHoldContact>().canTap = true;
+            moving_platform = false;
         }
     }
 }

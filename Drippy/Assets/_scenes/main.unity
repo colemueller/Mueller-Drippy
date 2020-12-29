@@ -5690,6 +5690,11 @@ PrefabInstance:
       propertyPath: bg_sprite
       value: 
       objectReference: {fileID: 1349691819}
+    - target: {fileID: 333406885, guid: e1f9086e278b7e14a894638e9bc9895a, type: 3}
+      propertyPath: movingHoldPrefab
+      value: 
+      objectReference: {fileID: 1720812655712374, guid: 01b8aced4c0f80047be67c2f890714ce,
+        type: 3}
     - target: {fileID: 519178091602072289, guid: e1f9086e278b7e14a894638e9bc9895a,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -5908,7 +5913,7 @@ PrefabInstance:
     - target: {fileID: 2776440806033991885, guid: e1f9086e278b7e14a894638e9bc9895a,
         type: 3}
       propertyPath: m_Text
-      value: v 1.8
+      value: v 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 3483761402233612152, guid: e1f9086e278b7e14a894638e9bc9895a,
         type: 3}

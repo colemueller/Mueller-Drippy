@@ -5,6 +5,7 @@ using UnityEngine;
 public class Generate : MonoBehaviour {
 
     public GameObject holdPrefab;
+    public GameObject movingHoldPrefab;
     public GameObject platformPrefab;
     public Transform parentObj;
     public SpriteRenderer bg_sprite;
@@ -15,18 +16,10 @@ public class Generate : MonoBehaviour {
     private int spawnNum = 5;
     private int dot_streak = 0;
     private int platform_streak = 0;
-    private Color current_color;
-    private float color_change_r;
-    private float color_change_g;
-    private float color_change_b;
-    private Color destination_color;
 
     public void Start()
     {
         spawnNum = 5;
-
-        current_color = holdPrefab.GetComponent<SpriteRenderer>().color;
-        destination_color = bg_sprite.color;
     }
 
     public void Update()
@@ -38,10 +31,6 @@ public class Generate : MonoBehaviour {
             float randx = Random.Range(-2f, 2f);
             // random percentage for picking a hold or something else
             int platform_chance = Random.Range(0, 100);
-            //random color changing
-            color_change_r = Random.Range(-.05f, .05f);
-            color_change_g = Random.Range(-.06f, .06f);
-            color_change_b = Random.Range(-.065f, .065f);
 
             if (platform_chance >= 75 && platform_streak <= 2)
             {
@@ -59,31 +48,30 @@ public class Generate : MonoBehaviour {
             {
                 dot_streak += 1;
                 platform_streak = 0;
-                GenerateHold(randx);
+                if (Random.Range(0, 50) <= 20)
+                {
+                    GenerateHold(randx);
+                }
+                else
+                {
+                    GenerateMovingHold(randx);
+                }
             }
-
-            destination_color = new Color(current_color[0] + color_change_r, current_color[1] + color_change_g, current_color[2] + color_change_b, 1f);
 
             spawnNum = spawnNum + 4;
         }
-        float r_diff = bg_sprite.color[0] - destination_color[0];
-        float g_diff = bg_sprite.color[1] - destination_color[1];
-        float b_diff = bg_sprite.color[2] - destination_color[2];
-
-        float r_inc = r_diff / -10f;
-        float g_inc = g_diff / -10f;
-        float b_inc = b_diff / -10f;
-
-        // bg_sprite.color = new Color(bg_sprite.color[0] + r_inc, bg_sprite.color[1] + g_inc, bg_sprite.color[2] + b_inc, 1f);
     }
 
     public void GenerateHold(float rand)
     {
         GameObject clone = Instantiate(holdPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.identity) as GameObject;
         clone.transform.SetParent(parentObj);
+    }
 
-        current_color = new Color(current_color[0] + color_change_r, current_color[1] + color_change_g, current_color[2] + color_change_b, 1f);
-        // clone.GetComponent<SpriteRenderer>().color = current_color;
+     public void GenerateMovingHold(float rand)
+    {
+        GameObject clone = Instantiate(movingHoldPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.identity) as GameObject;
+        clone.transform.SetParent(parentObj);
     }
     
 
@@ -113,9 +101,6 @@ public class Generate : MonoBehaviour {
         {
             clone.transform.localScale = new Vector3(-1f * clone.transform.localScale.x, clone.transform.localScale.y, clone.transform.localScale.z);
         }
-
-        current_color = new Color(current_color[0] + color_change_r, current_color[1] + color_change_g, current_color[2] + color_change_b, 1f);
-        // clone.GetComponent<SpriteRenderer>().color = current_color;
     }
 
 }

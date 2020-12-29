@@ -122,6 +122,7 @@ public class OnHoldContact : MonoBehaviour {
 
         if (doSway)
         {
+            transform.position = new Vector3(currentHold.transform.position.x, currentHold.transform.position.y, transform.position.z);
             playerRigidbody.angularVelocity = 0f;
             // sway based on sin wave
             transform.localEulerAngles = new Vector3(0, 0, Mathf.Sin(Time.time * swaySpeed) * swayDistance);
@@ -273,30 +274,6 @@ public class OnHoldContact : MonoBehaviour {
 
     public void OnScreenTap()
     {
-        GameObject holds_parent = GameObject.Find("HOLDS");
-        Transform[] platform_transforms = holds_parent.GetComponentsInChildren<Transform>();
-        foreach (Transform platform_transform in platform_transforms)
-        {
-            if (platform_transform.gameObject != null)
-            {
-                if (platform_transform.gameObject.GetComponent<grabRotate>())
-                {
-                    if (platform_transform.gameObject.GetComponent<grabRotate>().moving_platform)
-                    {
-                        canTap = false;
-                    }
-                    else
-                    {
-                        if (doSway)
-                        {
-                            canTap = true;
-                        }
-                    }
-                }
-            }
-
-        }
-        platform_transforms = null;
         if (canTap)
         {
             currentHold.tag = "Untagged";
