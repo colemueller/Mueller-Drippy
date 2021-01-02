@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class movingHold : MonoBehaviour
 {
-    public float move_distance = 5f;
-    public float move_speed = .5f;
+    public float move_distance;
+    public float move_speed;
     private int move_direction = 1;
     private Vector3 orig_pos;
 
@@ -13,6 +13,19 @@ public class movingHold : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        // random speed
+        move_speed = Random.Range(move_speed, move_speed + .015f);
+
+        // need to reset position so the movement doesn't take off screen
+        float new_spawn = Random.Range(-1.25f, 1.25f);
+        if (transform.position.x + move_distance > 1f)
+        {
+            transform.position = new Vector3(new_spawn, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x - move_distance < -1f)
+        {
+            transform.position = new Vector3(new_spawn, transform.position.y, transform.position.z);
+        }
         orig_pos = transform.position;
     }
 

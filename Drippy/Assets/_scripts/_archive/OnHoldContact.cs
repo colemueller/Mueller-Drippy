@@ -164,7 +164,12 @@ public class OnHoldContact : MonoBehaviour {
             }
             if (on_platform)
             {
-                if (playerRigidbody.velocity.x < 0f)
+                if (currentPlatform != null)
+                {
+                    transform.rotation = new Quaternion(0f, 0f, currentPlatform.transform.rotation.z, Quaternion.identity[3]);
+                }
+                
+                if (playerRigidbody.velocity.x < .0f)
                 {
                     // animate to left slide
                     player_animator.ResetTrigger("left_to_fall_trigger");
@@ -218,6 +223,10 @@ public class OnHoldContact : MonoBehaviour {
     {
         if (collision.CompareTag("hold"))
         {
+            if (on_platform)
+            {
+                on_platform = false;
+            }
             currentHold = collision.gameObject;
             
             // puffy puff when hit hold
@@ -242,7 +251,7 @@ public class OnHoldContact : MonoBehaviour {
             on_platform = true;
             currentPlatform = collision.gameObject;
             playerRigidbody.angularVelocity = 0f;
-            transform.rotation = new Quaternion(0f, 0f, collision.gameObject.transform.rotation.z, Quaternion.identity[3]);
+            // transform.rotation = new Quaternion(0f, 0f, collision.gameObject.transform.rotation.z, Quaternion.identity[3]);
             playerRigidbody.freezeRotation = true;
 
             // Determine how much to move drippy up so he doesn't rotate through the platform

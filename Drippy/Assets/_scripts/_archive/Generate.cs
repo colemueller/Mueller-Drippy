@@ -48,7 +48,7 @@ public class Generate : MonoBehaviour {
             {
                 dot_streak += 1;
                 platform_streak = 0;
-                if (Random.Range(0, 50) <= 20)
+                if (Random.Range(0, 50) <= 35)
                 {
                     GenerateHold(randx);
                 }
@@ -77,6 +77,17 @@ public class Generate : MonoBehaviour {
 
     public void GeneratePlatform(float rand, float angle_min, float angle_max)
     {
+        // try to keep platforms towards the sides
+        if (rand < 0f && rand > -1.5f)
+        {
+            rand = -1.5f - Random.Range(0f, .5f);
+        }
+        else if (rand >= 0f && rand < 1.5f)
+        {
+            rand = 1.5f + Random.Range(0f, .5f);
+        }
+        Debug.Log(rand);
+
         float rot = Random.Range(angle_min, angle_max);
         GameObject clone = Instantiate(platformPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.Euler(0f, 0f, rot)) as GameObject;
         clone.GetComponent<BoxCollider2D>().sharedMaterial = friction_mtl_2;
