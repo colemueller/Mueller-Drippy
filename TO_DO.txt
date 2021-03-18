@@ -1,10 +1,10 @@
+CORE DEV
+========
+
 X Platform Interaction thingy
 	X need spawning tweaks
 	- Need different "grab" sprite
-
-X (Maybe, if can find a good way to co-exist with spinning)Velocity squash and stretch
-
-X velocity bg distort
+	-"dissolve" platform when hits ends? (maybe only spawn on edges of screen and make bigger???)
 
 -Ad support 
 
@@ -12,4 +12,37 @@ X velocity bg distort
 
 -Make apple developer account
 
--Add 1 enemy
+-Add 1 enemy (side to side, kill on impact)
+
+-Art overhaul (doesn't need to be "better" per se, just cohesive)
+
+-pause screen (pulls up if app goes out of focus)
+
+-wind?? Only after a certain score threshhold? Or at periodic time intervals with changing amount of force?
+
+-music / sfx
+
+
+JUICE
+========
+
+X (Maybe, if can find a good way to co-exist with spinning)Velocity squash and stretch
+
+X velocity bg distort
+
+-screen shake
+
+- paralax background (clouds? mountains once you reach a certain score? Then skyscrapers? idk)
+
+-background lightning effects
+
+-Animations
+	-idle face for drippy (blinking basically)
+	-reactive for hitting a dot
+	-reactive for high speed
+	-death
+
+-Menu transistions
+	-Screens sliding in/out
+	-
+
