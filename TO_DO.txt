@@ -16,13 +16,15 @@ X Platform Interaction thingy
 
 -Art overhaul (doesn't need to be "better" per se, just cohesive)
 
--pause screen (pulls up if app goes out of focus)
+X pause screen (pulls up if app goes out of focus)
 
 -wind?? Only after a certain score threshhold? Or at periodic time intervals with changing amount of force?
 
 -music / sfx
 
 -tutorial stuff
+
+-new UI
 
 
 JUICE

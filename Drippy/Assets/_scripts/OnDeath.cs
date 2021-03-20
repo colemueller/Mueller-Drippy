@@ -7,7 +7,7 @@ public class OnDeath : MonoBehaviour
 {
     // Start is called before the first frame update
     public Text[] scores = new Text[5];
-    public GameObject scoreText;
+    public GameObject ingameUI;
     private int currScore;
 
     private bool setNewHighScore = false;
@@ -39,7 +39,7 @@ public class OnDeath : MonoBehaviour
 
     public void InvokeDeath()
     {  
-        scoreText.SetActive(false);
+        ingameUI.SetActive(false);
 
         //evaluate score and save high scores
         currScore = Score._score;

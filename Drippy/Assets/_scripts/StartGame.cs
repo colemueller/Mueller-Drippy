@@ -86,6 +86,7 @@ public class StartGame : MonoBehaviour
 
     public void OnStartPress()
     {
+        isStart = false;
         moveDrippy = false;
         startHold.position = new Vector3(playerTrans.position.x,startHold.position.y,startHold.position.z);
         startMenu.SetActive(false);
