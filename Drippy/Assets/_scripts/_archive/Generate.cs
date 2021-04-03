@@ -6,6 +6,7 @@ public class Generate : MonoBehaviour {
 
     public GameObject holdPrefab;
     public GameObject movingHoldPrefab;
+    public GameObject movingEnemyPrefab;
     public GameObject platformPrefab;
     public Transform parentObj;
     public SpriteRenderer bg_sprite;
@@ -48,13 +49,18 @@ public class Generate : MonoBehaviour {
             {
                 dot_streak += 1;
                 platform_streak = 0;
-                if (Random.Range(0, 50) <= 35)
+                int hold_gen = Random.Range(0, 100);
+                if (hold_gen <= 50)
                 {
                     GenerateHold(randx);
                 }
-                else
+                else if (hold_gen <= 85)
                 {
                     GenerateMovingHold(randx);
+                }
+                else
+                {
+                    GenerateMovingEnemy(randx);
                 }
             }
 
@@ -68,12 +74,18 @@ public class Generate : MonoBehaviour {
         clone.transform.SetParent(parentObj);
     }
 
-     public void GenerateMovingHold(float rand)
+    public void GenerateMovingHold(float rand)
     {
         GameObject clone = Instantiate(movingHoldPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.identity) as GameObject;
         clone.transform.SetParent(parentObj);
     }
-    
+
+    public void GenerateMovingEnemy(float rand)
+    {
+        GameObject clone = Instantiate(movingEnemyPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.identity) as GameObject;
+        clone.transform.SetParent(parentObj);
+    }
+
 
     public void GeneratePlatform(float rand, float angle_min, float angle_max)
     {

@@ -12,7 +12,8 @@ X Platform Interaction thingy
 
 -Make apple developer account
 
--Add 1 enemy (side to side, kill on impact)
+X Add 1 enemy (side to side, kill on impact)
+	- Need sprite/anims
 
 -Art overhaul (doesn't need to be "better" per se, just cohesive)
 
