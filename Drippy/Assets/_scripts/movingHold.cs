@@ -14,7 +14,7 @@ public class movingHold : MonoBehaviour
     void Awake()
     {
         // random speed
-        move_speed = Random.Range(move_speed, move_speed + .015f);
+        move_speed = Random.Range(move_speed, move_speed + .01f);
 
         // need to reset position so the movement doesn't take off screen
         float new_spawn = Random.Range(-1.25f, 1.25f);

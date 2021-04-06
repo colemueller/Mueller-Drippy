@@ -48,6 +48,7 @@ public class StartGame : MonoBehaviour
             //print(randStart);
             moveDrippy = true;
             InGameUI.SetActive(false);
+            music.Stop();
         }
     }
 
@@ -70,7 +71,7 @@ public class StartGame : MonoBehaviour
             }
             else
             { */
-                playerTrans.localEulerAngles = new Vector3(0, 0, Mathf.Sin(Time.time * rotSpeed) * 40);
+                playerTrans.localEulerAngles = new Vector3(0, 0, Mathf.Sin(Time.time * rotSpeed) * 10);
                 //playerTrans.localEulerAngles = new Vector3(0,0,playerTrans.localEulerAngles.z + rotSpeed);
                 playerTrans.position = new Vector3((Mathf.Sin(Time.time * moveSpeed) * moveDist) * randStart,playerTrans.position.y,1);
             //}

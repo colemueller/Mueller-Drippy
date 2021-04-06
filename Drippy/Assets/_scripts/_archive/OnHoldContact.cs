@@ -34,6 +34,7 @@ public class OnHoldContact : MonoBehaviour {
     private float min_shake;
     private bool shake_left;
     private bool shake_up;
+    public SpriteRenderer eyes;
 
     private void Awake()
     {
@@ -41,7 +42,8 @@ public class OnHoldContact : MonoBehaviour {
         drop = GetComponent<AudioSource>();
         myTransform = this.GetComponent<RectTransform>();
         startScale = transform.localScale;
-        player_animator = gameObject.GetComponentInChildren<Animator>();
+        //player_animator = gameObject.GetComponentInChildren<Animator>();
+        player_animator = transform.GetChild(0).GetComponent<Animator>();
         cam_pos = new Vector3(0, (myTransform.position.y - 3.5f), 0);
         min_shake = -max_shake;
         shake_left = true;
@@ -122,12 +124,40 @@ public class OnHoldContact : MonoBehaviour {
 
         if (doSway)
         {
-            transform.position = new Vector3(currentHold.transform.position.x, currentHold.transform.position.y, transform.position.z);
+            transform.position = new Vector3(currentHold.transform.position.x, currentHold.transform.position.y - 0.2f, transform.position.z);
             playerRigidbody.angularVelocity = 0f;
             // sway based on sin wave
-            transform.localEulerAngles = new Vector3(0, 0, Mathf.Sin(Time.time * swaySpeed) * swayDistance);
+            float newAngle = Mathf.Sin(Time.time * swaySpeed) * swayDistance;
+            transform.localEulerAngles = new Vector3(0, 0, newAngle);
             // determines if the player is on an up or down swing for use in the OnScreenTap y-velocity
             current_angle = transform.localEulerAngles.z;
+            eyes.enabled = false;
+
+            if(current_angle != prev_angle)
+            {
+                float newNum = Mathf.Round((current_angle-prev_angle) * 10.0f) * 0.1f;
+                if(current_angle > 300 && prev_angle < 10) //just crossed mid from right to left
+                {
+                    player_animator.SetBool("goRight",false);
+                }
+                else if(current_angle < 10 && prev_angle > 300) //just crossed mid from left to right
+                {
+                    player_animator.SetBool("goRight",true);
+                }
+                else
+                {
+                    if(newNum > 0) //start going right
+                    {
+                        player_animator.SetBool("goRight",true);
+                    }
+                    if(newNum < 0) //start going left
+                    {
+                        player_animator.SetBool("goRight",false);
+                    }
+                } 
+            }
+            
+            
             if (current_angle >= 180f) {
                 //left side
                 if (current_angle > prev_angle) {
@@ -233,12 +263,17 @@ public class OnHoldContact : MonoBehaviour {
             cloud_puff_particles = currentHold.GetComponentInChildren<ParticleSystem>();
             cloud_puff_particles.Play();
 
+            
+
             GetComponent<CircleCollider2D>().enabled = false;
             doSway = true;
-            transform.position = new Vector3(currentHold.transform.position.x, currentHold.transform.position.y, transform.position.z);
+            player_animator.SetBool("doSway",true);
+            transform.position = new Vector3(currentHold.transform.position.x, currentHold.transform.position.y - 0.2f, transform.position.z);
             playerRigidbody.velocity = Vector2.zero;
             playerRigidbody.gravityScale = 0;
             
+            currentHold.GetComponentInChildren<Animator>().SetTrigger("doLand");
+
             drop.Play();
             canTap = true;
         }
@@ -291,6 +326,9 @@ public class OnHoldContact : MonoBehaviour {
             //cam.GetComponent<CameraFollow>().enabled = true;
             GetComponent<CircleCollider2D>().enabled = true;
             doSway = false;
+            eyes.enabled = true;
+            player_animator.SetBool("goRight",false);
+            player_animator.SetBool("doSway",false);
             playerRigidbody.gravityScale = 1;
             // x velocity is determined by the cosine value of the player's angle at time of tap.
             //      ___

@@ -90,7 +90,12 @@ public class ButtonFunctions : MonoBehaviour {
     public void UpdateMusicVol(float val)
     {
         PlayerPrefs.SetFloat("MusicVolume",val);
+
         music.volume = val;
+        if(music.isPlaying == false && StartGame.isStart == false)
+        {
+            music.Play();
+        }
     }
     public void UpdateSfxVol(float val)
     {
@@ -101,6 +106,10 @@ public class ButtonFunctions : MonoBehaviour {
     {
         PlayerPrefs.SetFloat("AmbientVolume",val);
         rain.volume = val;
+        if(rain.isPlaying == false)
+        {
+            rain.Play();
+        }
     }
 
     public void doPause(bool show)
