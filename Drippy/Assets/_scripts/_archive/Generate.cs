@@ -27,42 +27,51 @@ public class Generate : MonoBehaviour {
     {
         if(Score._score >= spawnNum)
         {
-            //print(Score._score +" : " + spawnNum);
-            // random position for the x placement
             float randx = Random.Range(-2f, 2f);
-            // random percentage for picking a hold or something else
-            int platform_chance = Random.Range(0, 100);
+            if(PlayerPrefs.GetInt("UseAltMusic") == 0) //regular mode
+            {
+                //print(Score._score +" : " + spawnNum);
+                // random position for the x placement
+                //float randx = Random.Range(-2f, 2f);
+                // random percentage for picking a hold or something else
+                int platform_chance = Random.Range(0, 100);
 
-            if (platform_chance >= 75 && platform_streak <= 2)
-            {
-                platform_streak += 1;
-                dot_streak = 0;
-                if (randx >= 0) {
-                    GeneratePlatform(randx, 0f, 50f);
-                }
-                else
+                if (platform_chance >= 75 && platform_streak <= 2)
                 {
-                    GeneratePlatform(randx, -50f, 0f);
-                }
-            } 
-            else 
-            {
-                dot_streak += 1;
-                platform_streak = 0;
-                int hold_gen = Random.Range(0, 100);
-                if (hold_gen <= 50)
+                    platform_streak += 1;
+                    dot_streak = 0;
+                    if (randx >= 0) {
+                        GeneratePlatform(randx, 0f, 50f);
+                    }
+                    else
+                    {
+                        GeneratePlatform(randx, -50f, 0f);
+                    }
+                } 
+                else 
                 {
-                    GenerateHold(randx);
-                }
-                else if (hold_gen <= 85)
-                {
-                    GenerateMovingHold(randx);
-                }
-                else
-                {
-                    GenerateMovingEnemy(randx);
+                    dot_streak += 1;
+                    platform_streak = 0;
+                    int hold_gen = Random.Range(0, 100);
+                    if (hold_gen <= 50)
+                    {
+                        GenerateHold(randx);
+                    }
+                    else if (hold_gen <= 85)
+                    {
+                        GenerateMovingHold(randx);
+                    }
+                    else
+                    {
+                        GenerateMovingEnemy(randx);
+                    }
                 }
             }
+            else //easy mode
+            {
+                GenerateHold(randx);
+            }
+            
 
             spawnNum = spawnNum + 4;
         }
