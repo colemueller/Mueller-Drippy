@@ -8,9 +8,9 @@ public class StartGame : MonoBehaviour
     private GameObject startMenu;
     public Rigidbody2D playerRB;
     private RectTransform playerTrans;
-    public AudioSource music;
-    public AudioSource rain;
-    public AudioSource drop;
+    //public AudioSource music;
+    //public AudioSource rain;
+    //public AudioSource drop;
     public GameObject InGameUI;
     private bool moveDrippy = true;
     public float rotSpeed;
@@ -20,20 +20,20 @@ public class StartGame : MonoBehaviour
     private float startTime;
     public Transform startHold;
     private int randStart;
-
+    //public AudioManager audioManager;
 
     void Awake()
     {
-        if(!PlayerPrefs.HasKey("MusicVolume"))
-        {
-            PlayerPrefs.SetFloat("MusicVolume",0.8f);
-            PlayerPrefs.SetFloat("SfxVolume",0.8f);
-            PlayerPrefs.SetFloat("AmbientVolume",0.8f);
-        }
+        Score._score = 0;
+        OnDeath.isDead = false;
+        SetDefaultPlayerPrefs();
+    }
 
-        rain.volume = PlayerPrefs.GetFloat("AmbientVolume");
-        rain.Play();
-        drop.volume = PlayerPrefs.GetFloat("SfxVolume");
+    void Start()
+    {
+        AudioManager.rain.volume = PlayerPrefs.GetFloat("AmbientVolume");
+        AudioManager.rain.Play();
+        AudioManager.drop.volume = PlayerPrefs.GetFloat("SfxVolume");
 
         startMenu = this.gameObject;
         playerTrans = playerRB.gameObject.GetComponent<RectTransform>();
@@ -48,8 +48,10 @@ public class StartGame : MonoBehaviour
             //print(randStart);
             moveDrippy = true;
             InGameUI.SetActive(false);
-            music.Stop();
+            AudioManager.music.Stop();
+            AudioManager.musicPlaying = false;
         }
+        
     }
 
     // Update is called once per frame
@@ -87,19 +89,41 @@ public class StartGame : MonoBehaviour
 
     public void OnStartPress()
     {
+        //print(AudioManager.musicPlaying);
         isStart = false;
         moveDrippy = false;
         startHold.position = new Vector3(playerTrans.position.x,startHold.position.y,startHold.position.z);
         startMenu.SetActive(false);
         playerRB.gravityScale = 1;
-        if(PlayerPrefs.GetFloat("MusicVolume") != 0.0f)
+        if(PlayerPrefs.GetFloat("MusicVolume") != 0.0f && AudioManager.musicPlaying != true)
         {
-            music.volume = PlayerPrefs.GetFloat("MusicVolume");
+            AudioManager.music.volume = PlayerPrefs.GetFloat("MusicVolume");
             //print(music.volume);
-            music.Play();
+            AudioManager.music.Play();
+            AudioManager.musicPlaying = true;
         }
-        drop.volume = PlayerPrefs.GetFloat("SfxVolume");
+        //AudioManager.drop.volume = PlayerPrefs.GetFloat("SfxVolume");
         //rain.volume = 0.5f;
         InGameUI.SetActive(true);
+    }
+
+    void SetDefaultPlayerPrefs()
+    {
+        if(!PlayerPrefs.HasKey("MusicVolume"))
+        {
+            PlayerPrefs.SetFloat("MusicVolume",0.8f);           
+        }
+        if(!PlayerPrefs.HasKey("SfxVolume"))
+        {
+            PlayerPrefs.SetFloat("SfxVolume",0.8f);           
+        }
+        if(!PlayerPrefs.HasKey("AmbientVolume"))
+        {
+            PlayerPrefs.SetFloat("AmbientVolume",0.8f);           
+        } 
+        if(!PlayerPrefs.HasKey("UseAltMusic"))
+        {
+            PlayerPrefs.SetInt("UseAltMusic",0);           
+        } 
     }
 }

@@ -7,13 +7,14 @@ using UnityEngine.UI;
 public class ButtonFunctions : MonoBehaviour {
 
     private AudioSource[] allAudioSources;
-    public AudioSource rain, music, drop;
+    //public AudioSource rain, music, drop;
     public Sprite audio_playSprite;
     public Sprite audio_muteSprite;
     public Image muteBtnImage;
 
     public GameObject StartMenu, OptionsMenu, PauseMenu;
     public Slider musicVolSlider, sfxVolSlider, ambientVolSlider;
+    public Toggle altMusicToggle;
 
     public Button optionsBackBtn;
     public GameObject pauseJunk;
@@ -39,11 +40,19 @@ public class ButtonFunctions : MonoBehaviour {
         musicVolSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxVolSlider.value = PlayerPrefs.GetFloat("SfxVolume");
         ambientVolSlider.value = PlayerPrefs.GetFloat("AmbientVolume");
+        if(PlayerPrefs.GetInt("UseAltMusic") == 1 && StartGame.isStart)
+        {
+            //Mute(altMusicToggle.onValueChanged);
+            altMusicToggle.isOn = true;
+            //Unmute(altMusicToggle.onValueChanged);
+        }
+
     }
 
     public void Restart(bool isStart)
     {
         Score._score = 0;
+        OnDeath.isDead = false;
         if(isStart)
         {
             StartGame.isStart = true;
@@ -91,24 +100,25 @@ public class ButtonFunctions : MonoBehaviour {
     {
         PlayerPrefs.SetFloat("MusicVolume",val);
 
-        music.volume = val;
-        if(music.isPlaying == false && StartGame.isStart == false)
+        AudioManager.music.volume = val;
+        if(AudioManager.music.isPlaying == false && StartGame.isStart == false)
         {
-            music.Play();
+            AudioManager.music.Play();
+            AudioManager.musicPlaying = true;
         }
     }
     public void UpdateSfxVol(float val)
     {
         PlayerPrefs.SetFloat("SfxVolume",val);
-        drop.volume = val;
+        AudioManager.drop.volume = val;
     }
     public void UpdateAmbientVol(float val)
     {
         PlayerPrefs.SetFloat("AmbientVolume",val);
-        rain.volume = val;
-        if(rain.isPlaying == false)
+        AudioManager.rain.volume = val;
+        if(AudioManager.rain.isPlaying == false)
         {
-            rain.Play();
+            AudioManager.rain.Play();
         }
     }
 
@@ -129,6 +139,12 @@ public class ButtonFunctions : MonoBehaviour {
         PauseMenu.SetActive(show);
     }
 
+    public void quitGame()
+    {
+        doPause(false);
+        Restart(true);
+    }
+
     public void pauseShowOptions(bool show)
     {
         pauseJunk.SetActive(!show);
@@ -138,11 +154,42 @@ public class ButtonFunctions : MonoBehaviour {
     void OnApplicationFocus(bool focus)
     {
         //Debug.Log("FOCUS: "+ focus + StartGame.isStart);
-        if(focus == false && StartGame.isStart == false)
+        if(focus == false && StartGame.isStart == false && !OnDeath.isDead)
         {
             doPause(true);
         }
 
+    }
+
+    public void ToggleAltMusic()
+    {
+        AudioManager.ToggleAltMusic(altMusicToggle.isOn);
+        if(altMusicToggle.isOn)
+        {
+            PlayerPrefs.SetInt("UseAltMusic",1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("UseAltMusic",0);
+        }
+    }
+
+     public void Mute( UnityEngine.Events.UnityEventBase ev )
+    {
+        int count = ev.GetPersistentEventCount();
+        for ( int i = 0 ; i < count ; i++ )
+        {
+            ev.SetPersistentListenerState( i, UnityEngine.Events.UnityEventCallState.Off );
+        }
+    }
+    
+    public void Unmute( UnityEngine.Events.UnityEventBase ev )
+    {
+        int count = ev.GetPersistentEventCount();
+        for ( int i = 0 ; i < count ; i++ )
+        {
+            ev.SetPersistentListenerState( i, UnityEngine.Events.UnityEventCallState.RuntimeOnly );
+        }
     }
     
 }

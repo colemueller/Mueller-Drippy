@@ -10,22 +10,22 @@ X Platform Interaction thingy
 
 -Google Analytics
 
--Make apple developer account
+- Make apple developer account (ON HOLD - DONT HAVE ACCESS TO MAC/xcode)
 
 X Add 1 enemy (side to side, kill on impact)
 	- Need sprite/anims
 
--Art overhaul (doesn't need to be "better" per se, just cohesive)
+- Art overhaul (doesn't need to be "better" per se, just cohesive)
 
 X pause screen (pulls up if app goes out of focus)
 
--wind?? Only after a certain score threshhold? Or at periodic time intervals with changing amount of force?
+- wind?? Only after a certain score threshhold? Or at periodic time intervals with changing amount of force?
 
--music / sfx
+- music / sfx
 
--tutorial stuff
+- tutorial stuff
 
--new UI
+- new UI
 
 
 JUICE
@@ -35,15 +35,15 @@ X (Maybe, if can find a good way to co-exist with spinning)Velocity squash and s
 
 X velocity bg distort
 
--screen shake
+- screen shake
 
 - paralax background (clouds? mountains once you reach a certain score? Then skyscrapers? idk)
 
--background lightning effects
+- background lightning effects
 
--Animations
-	-idle face for drippy (blinking basically)
-	-reactive for hitting a dot
+- Animations
+	X idle face for drippy (blinking basically)
+	X reactive for hitting a dot
 	-reactive for high speed
 	-death
 

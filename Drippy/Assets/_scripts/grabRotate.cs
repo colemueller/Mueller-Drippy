@@ -44,7 +44,7 @@ public class grabRotate : MonoBehaviour
 
             if (platform_transform.localScale.x < 0f)
             {
-                Debug.Log(angle);
+                //Debug.Log(angle);
                 if (angle <= 180f - max_rotate && angle > 0f)
                 {
                     angle = -max_rotate;

@@ -98,7 +98,7 @@ public class Generate : MonoBehaviour {
         {
             rand = 1.5f + Random.Range(0f, .5f);
         }
-        Debug.Log(rand);
+       // Debug.Log(rand);
 
         float rot = Random.Range(angle_min, angle_max);
         GameObject clone = Instantiate(platformPrefab, new Vector3(rand, transform.position.y, 2), Quaternion.Euler(0f, 0f, rot)) as GameObject;

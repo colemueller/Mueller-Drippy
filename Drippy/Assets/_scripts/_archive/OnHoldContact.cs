@@ -7,7 +7,7 @@ public class OnHoldContact : MonoBehaviour {
 
     //public Score scoreText;
     private float score = 0;
-    private AudioSource drop;
+    //private AudioSource drop;
     private Rigidbody2D playerRigidbody;
     private GameObject currentHold;
     private GameObject currentPlatform;
@@ -39,7 +39,7 @@ public class OnHoldContact : MonoBehaviour {
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
-        drop = GetComponent<AudioSource>();
+        //drop = GetComponent<AudioSource>();
         myTransform = this.GetComponent<RectTransform>();
         startScale = transform.localScale;
         //player_animator = gameObject.GetComponentInChildren<Animator>();
@@ -274,7 +274,7 @@ public class OnHoldContact : MonoBehaviour {
             
             currentHold.GetComponentInChildren<Animator>().SetTrigger("doLand");
 
-            drop.Play();
+            AudioManager.drop.Play();
             canTap = true;
         }
     }

@@ -15,12 +15,14 @@ public class OnDeath : MonoBehaviour
     private bool doWiggle = false;
     private RectTransform wiggleMe = null;
     private Text MainText;
+    public static bool isDead = false;
 
     public void SetUp()
     {
         EventManager.StartListening("death", InvokeDeath);
         MainText = this.transform.Find("MainText").GetComponent<Text>();
         this.gameObject.SetActive(true);
+        isDead = false;
     }
 
     void Update()
@@ -39,6 +41,7 @@ public class OnDeath : MonoBehaviour
 
     public void InvokeDeath()
     {  
+        isDead = true;
         ingameUI.SetActive(false);
 
         //evaluate score and save high scores
