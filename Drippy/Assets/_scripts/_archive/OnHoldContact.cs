@@ -277,6 +277,18 @@ public class OnHoldContact : MonoBehaviour {
             AudioManager.drop.Play();
             canTap = true;
         }
+        else if (collision.gameObject.tag == "platform_disable")
+        {
+            GameObject parent_platform = collision.gameObject.transform.parent.gameObject;
+            BoxCollider2D[] cols = parent_platform.GetComponentsInChildren<BoxCollider2D>();
+            foreach (BoxCollider2D col in cols)
+            {
+                if (col.gameObject.name == "top_col" || col.gameObject.name == "off_collision")
+                {
+                    col.enabled = false;
+                }
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -311,6 +323,15 @@ public class OnHoldContact : MonoBehaviour {
         if (collision.CompareTag("platform_edge"))
         {
             on_platform = false;
+            GameObject pf = collision.gameObject.transform.parent.gameObject;
+            BoxCollider2D[] cols = pf.GetComponentsInChildren<BoxCollider2D>();
+            foreach(BoxCollider2D col in cols)
+            {
+                if (col.gameObject.name == "top_col")
+                {
+                    col.enabled = false;
+                }
+            }
             playerRigidbody.freezeRotation = false;
             playerRigidbody.angularVelocity = 90f;
         }

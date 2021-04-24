@@ -6,6 +6,13 @@ public class DestroyAll : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
+        if (collision.gameObject.transform.parent.name == "platform(Clone)")
+        {
+            Destroy(collision.gameObject.transform.parent.gameObject);
+        }
+        else
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

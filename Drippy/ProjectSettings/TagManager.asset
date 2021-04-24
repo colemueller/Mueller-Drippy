@@ -11,6 +11,7 @@ TagManager:
   - platform_edge
   - collidedPlatform
   - AudioManager
+  - platform_disable
   layers:
   - Default
   - TransparentFX
