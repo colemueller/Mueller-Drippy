@@ -120,6 +120,71 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &30494077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30494078}
+  - component: {fileID: 30494079}
+  m_Layer: 0
+  m_Name: background_clouds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &30494078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30494077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &30494079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30494077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd576dfc2d04c4c4fb5fa39c407e736d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generator_object: {fileID: 2035816396}
+  clouds:
+  - {fileID: 4356529903917683625, guid: c3f45453b775a6d4394deea3d341bc2b, type: 3}
+  - {fileID: 6928717620334105607, guid: e0b9eca552f4a2441822cffdfae89f4c, type: 3}
+  - {fileID: 4097542883914794945, guid: 85610ec89e5f11649af2358d3742594e, type: 3}
+  - {fileID: 9206705980756081075, guid: dd524c73416f97846bda812327481459, type: 3}
+  - {fileID: 8324081105268283801, guid: 583eb01da769c864eba1d70880958e73, type: 3}
+  - {fileID: 2893158328370506475, guid: a80b50c6f91c7494f8e26a41069d14c8, type: 3}
+  - {fileID: 6948472456258314003, guid: 9597f9abcdfb84845830c339b20edccd, type: 3}
+  - {fileID: 2964480759605922818, guid: 245dbd201c2afe24ea97af20f6b54eaf, type: 3}
+  - {fileID: 8074177915617082924, guid: 659bdcacb0458e541bd8b5ac6d8754b5, type: 3}
+  last_cloud: {fileID: 0}
+  density: 3
+  gen_x_min: -2
+  gen_x_max: 2
+  gen_y_separation_min: 5
+  gen_y_separation_max: 10
+  paralax_ratio: 0.6
+  opacity_min: 0.3
+  opacity_max: 0.5
+  color_scale: 0.5
+  cloud_scale: 0.6
 --- !u!1 &177237842
 GameObject:
   m_ObjectHideFlags: 0
@@ -5042,6 +5107,71 @@ Transform:
   m_Children:
   - {fileID: 4766373808322630}
   m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1506347362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1506347364}
+  - component: {fileID: 1506347363}
+  m_Layer: 0
+  m_Name: background_clouds_slow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1506347363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506347362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd576dfc2d04c4c4fb5fa39c407e736d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generator_object: {fileID: 2035816396}
+  clouds:
+  - {fileID: 4356529903917683625, guid: c3f45453b775a6d4394deea3d341bc2b, type: 3}
+  - {fileID: 6928717620334105607, guid: e0b9eca552f4a2441822cffdfae89f4c, type: 3}
+  - {fileID: 4097542883914794945, guid: 85610ec89e5f11649af2358d3742594e, type: 3}
+  - {fileID: 9206705980756081075, guid: dd524c73416f97846bda812327481459, type: 3}
+  - {fileID: 8324081105268283801, guid: 583eb01da769c864eba1d70880958e73, type: 3}
+  - {fileID: 2893158328370506475, guid: a80b50c6f91c7494f8e26a41069d14c8, type: 3}
+  - {fileID: 6948472456258314003, guid: 9597f9abcdfb84845830c339b20edccd, type: 3}
+  - {fileID: 2964480759605922818, guid: 245dbd201c2afe24ea97af20f6b54eaf, type: 3}
+  - {fileID: 8074177915617082924, guid: 659bdcacb0458e541bd8b5ac6d8754b5, type: 3}
+  last_cloud: {fileID: 0}
+  density: 3
+  gen_x_min: -2
+  gen_x_max: 2
+  gen_y_separation_min: 5
+  gen_y_separation_max: 10
+  paralax_ratio: 0.2
+  opacity_min: 0.05
+  opacity_max: 0.25
+  color_scale: 0.2
+  cloud_scale: 0.12
+--- !u!4 &1506347364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506347362}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2022606269
@@ -5110,6 +5240,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2035816396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 719913111261500783, guid: 12ead0e7f7b18664c8d096b386d23e12,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835238010164474595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4766373808322630 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3824070582808856293, guid: ddcf182ac31ea2a4ea38e1191670385e,
@@ -5138,6 +5274,11 @@ PrefabInstance:
       propertyPath: parentObj
       value: 
       objectReference: {fileID: 1007631217}
+    - target: {fileID: 2260356998926113053, guid: 12ead0e7f7b18664c8d096b386d23e12,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1992.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3116028317376371087, guid: 12ead0e7f7b18664c8d096b386d23e12,
         type: 3}
       propertyPath: m_Name
@@ -5397,7 +5538,7 @@ PrefabInstance:
     - target: {fileID: 8675391927634277836, guid: 76d03fb0d993ab443ba7337fb99e1ea7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8675391927634277836, guid: 76d03fb0d993ab443ba7337fb99e1ea7,
         type: 3}
