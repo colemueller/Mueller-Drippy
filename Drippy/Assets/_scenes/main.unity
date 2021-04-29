@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generator_object: {fileID: 2035816396}
+  destroyer: {fileID: 1079948752}
   clouds:
   - {fileID: 4356529903917683625, guid: c3f45453b775a6d4394deea3d341bc2b, type: 3}
   - {fileID: 6928717620334105607, guid: e0b9eca552f4a2441822cffdfae89f4c, type: 3}
@@ -174,7 +175,6 @@ MonoBehaviour:
   - {fileID: 6948472456258314003, guid: 9597f9abcdfb84845830c339b20edccd, type: 3}
   - {fileID: 2964480759605922818, guid: 245dbd201c2afe24ea97af20f6b54eaf, type: 3}
   - {fileID: 8074177915617082924, guid: 659bdcacb0458e541bd8b5ac6d8754b5, type: 3}
-  last_cloud: {fileID: 0}
   density: 3
   gen_x_min: -2
   gen_x_max: 2
@@ -5109,6 +5109,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1079948752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7859284769594183975, guid: 12ead0e7f7b18664c8d096b386d23e12,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835238010164474595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1506347362
 GameObject:
   m_ObjectHideFlags: 0
@@ -5139,6 +5145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generator_object: {fileID: 2035816396}
+  destroyer: {fileID: 1079948752}
   clouds:
   - {fileID: 4356529903917683625, guid: c3f45453b775a6d4394deea3d341bc2b, type: 3}
   - {fileID: 6928717620334105607, guid: e0b9eca552f4a2441822cffdfae89f4c, type: 3}
@@ -5149,7 +5156,6 @@ MonoBehaviour:
   - {fileID: 6948472456258314003, guid: 9597f9abcdfb84845830c339b20edccd, type: 3}
   - {fileID: 2964480759605922818, guid: 245dbd201c2afe24ea97af20f6b54eaf, type: 3}
   - {fileID: 8074177915617082924, guid: 659bdcacb0458e541bd8b5ac6d8754b5, type: 3}
-  last_cloud: {fileID: 0}
   density: 3
   gen_x_min: -2
   gen_x_max: 2
@@ -5159,7 +5165,7 @@ MonoBehaviour:
   opacity_min: 0.05
   opacity_max: 0.25
   color_scale: 0.2
-  cloud_scale: 0.12
+  cloud_scale: 0.3
 --- !u!4 &1506347364
 Transform:
   m_ObjectHideFlags: 0
