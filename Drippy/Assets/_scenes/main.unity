@@ -5115,6 +5115,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1835238010164474595}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1216579811 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6323707060927290299, guid: 76d03fb0d993ab443ba7337fb99e1ea7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6323707061185324932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1506347362
 GameObject:
   m_ObjectHideFlags: 0
@@ -5506,6 +5512,11 @@ PrefabInstance:
       propertyPath: main_camera
       value: 
       objectReference: {fileID: 763154511}
+    - target: {fileID: 6323707060927290309, guid: 76d03fb0d993ab443ba7337fb99e1ea7,
+        type: 3}
+      propertyPath: myAnim
+      value: 
+      objectReference: {fileID: 1216579811}
     - target: {fileID: 8675391927634277836, guid: 76d03fb0d993ab443ba7337fb99e1ea7,
         type: 3}
       propertyPath: m_LocalPosition.x
