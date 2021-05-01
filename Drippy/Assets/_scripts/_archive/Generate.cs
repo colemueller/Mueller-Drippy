@@ -8,6 +8,9 @@ public class Generate : MonoBehaviour {
     public GameObject movingHoldPrefab;
     public GameObject movingEnemyPrefab;
     public GameObject platformPrefab;
+    public int spawn_moving_holds_at;
+    public int spawn_moving_enemies_at;
+    public int spawn_platforms_at;
     public Transform parentObj;
     public SpriteRenderer bg_sprite;
     public PhysicsMaterial2D friction_mtl_0;
@@ -16,6 +19,7 @@ public class Generate : MonoBehaviour {
 
     private int spawnNum = 5;
     private int dot_streak = 0;
+    private int enemy_streak = 0;
     private int platform_streak = 0;
 
     public void Start()
@@ -30,11 +34,16 @@ public class Generate : MonoBehaviour {
             float randx = Random.Range(-2f, 2f);
             if(PlayerPrefs.GetInt("UseAltMusic") == 0) //regular mode
             {
-                //print(Score._score +" : " + spawnNum);
-                // random position for the x placement
-                //float randx = Random.Range(-2f, 2f);
                 // random percentage for picking a hold or something else
-                int platform_chance = Random.Range(0, 100);
+                int platform_chance = 0;
+                if (Score._score < spawn_platforms_at)
+                {
+                    platform_chance = Random.Range(0, 75); // No platforms
+                }
+                else
+                {
+                    platform_chance = Random.Range(0, 100); // All spawnable
+                }
 
                 if (platform_chance >= 75 && platform_streak <= 2)
                 {
@@ -52,7 +61,19 @@ public class Generate : MonoBehaviour {
                 {
                     dot_streak += 1;
                     platform_streak = 0;
-                    int hold_gen = Random.Range(0, 100);
+                    int hold_gen = 0;
+                    if (Score._score < spawn_moving_holds_at)
+                    {
+                        hold_gen = Random.Range(0, 50); // Only normal holds
+                    }
+                    else if (Score._score < spawn_moving_enemies_at)
+                    {
+                        hold_gen = Random.Range(0, 85); // Add moving holds
+                    }
+                    else
+                    {
+                        hold_gen = Random.Range(0, 100); // Add enemies
+                    }
                     if (hold_gen <= 50)
                     {
                         GenerateHold(randx);
@@ -61,9 +82,14 @@ public class Generate : MonoBehaviour {
                     {
                         GenerateMovingHold(randx);
                     }
-                    else
+                    else if (enemy_streak < 2)
                     {
                         GenerateMovingEnemy(randx);
+                        enemy_streak += 1;
+                    }
+                    else
+                    {
+                        GenerateHold(randx);
                     }
                 }
             }
